@@ -7,6 +7,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.netflix.loadbalancer.IRule;
 import com.netflix.loadbalancer.RandomRule;
+import com.netflix.loadbalancer.RoundRobinRule;
 
 @Configuration
 public class ConfigBean {
@@ -16,9 +17,10 @@ public class ConfigBean {
 		return new RestTemplate();
 	}
 	
-	@Bean
+	/*@Bean
 	public IRule getRule() {
 		
-		return new RandomRule(); // Ribbon 默认负载均衡算法为轮询，这里改为随机
-	}
+		// return new RoundRobinRule(); // Ribbon 默认的负载均衡算法为轮询
+		return new RandomRule(); // 随机算法
+	}*/
 }
