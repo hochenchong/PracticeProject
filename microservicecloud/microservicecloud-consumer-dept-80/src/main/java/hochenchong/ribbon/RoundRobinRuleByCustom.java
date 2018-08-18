@@ -13,8 +13,7 @@ import com.netflix.loadbalancer.Server;
 
 
 /**
- * @Description: 根据 com.netflix.loadbalancer.RoundRobinRule 而修改的自定义轮询算法
- * 					轮询的同时，每个服务被调用 5次
+ * @Description: 根据 com.netflix.loadbalancer.RoundRobinRule 而修改的自定义轮询算法，每台服务器被调用 5 次后轮到下一台服务器
  * @author: HochenChong
  * @date: 2018-08-18
  * @version v0.1
@@ -23,8 +22,8 @@ import com.netflix.loadbalancer.Server;
 public class RoundRobinRuleByCustom extends AbstractLoadBalancerRule {
 
     private AtomicInteger nextServerCyclicCounter;
-    private int total = 0;    //总共被调用的次数，目前要求每台被调用5次
-    private int currentIndex = 0;//当前提供服务的机器号
+    private int total = 0; // 总共被调用的次数，目前要求每台被调用 5 次
+    private int currentIndex = 0; // 当前提供服务的服务器
 
 
     private static Logger log = LoggerFactory.getLogger(RoundRobinRuleByCustom.class);
@@ -57,7 +56,7 @@ public class RoundRobinRuleByCustom extends AbstractLoadBalancerRule {
                 return null;
             }
 
-            // 判断该服务器是否被调用 5 次了，如果 5 次了则轮询到下一台服务
+            // 判断该服务器是否被调用 5 次了，如果 5 次了则轮询到下一台服务器
             if (total < 5) {
             	total ++;
             	server = allServers.get(currentIndex);
