@@ -42,6 +42,7 @@ public class DeptController {
 
 	public Dept processHystrix_Get(@PathVariable("id") Long id) {
 		Dept dept = new Dept();
+		
 		dept.setDeptno(id);
 		dept.setDname("该ID：" + id + "没有没有对应的信息,null--@HystrixCommand");
 		dept.setDb_source("no this database in MySQL");
