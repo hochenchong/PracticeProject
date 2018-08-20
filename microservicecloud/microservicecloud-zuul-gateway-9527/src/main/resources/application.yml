@@ -4,7 +4,12 @@ server:
 spring: 
   application:
     name: microservicecloud-zuul-gateway
- 
+
+zuul: 
+  routes: 
+    mydept.serviceId: microservicecloud-dept
+    mydept.path: /mydept/**
+
 eureka: 
   client: 
     service-url: 
