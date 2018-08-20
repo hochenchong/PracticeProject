@@ -6,6 +6,7 @@ spring:
     name: microservicecloud-zuul-gateway
 
 zuul: 
+  prefix: /springcloud                                                         # 设置统一的公共前缀
   # ignored-services: microservicecloud-dept                                   # 隐藏真实的服务名称 
   ignored-services: "*"                                                        # 隐藏所有服务的真实名称
   routes: 
