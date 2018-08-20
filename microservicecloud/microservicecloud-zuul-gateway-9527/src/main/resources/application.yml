@@ -6,6 +6,7 @@ spring:
     name: microservicecloud-zuul-gateway
 
 zuul: 
+  ignored-services: microservicecloud-dept                                   # 隐藏真实的服务名称 
   routes: 
     mydept.serviceId: microservicecloud-dept
     mydept.path: /mydept/**
