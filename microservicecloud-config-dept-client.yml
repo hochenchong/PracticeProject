@@ -27,7 +27,7 @@ mybatis:
   - classpath:mybatis/mapper/**/*.xml
  
 eureka: 
-  client: #¿Í»§¶Ë×¢²á½øeureka·şÎñÁĞ±íÄÚ
+  client: #å®¢æˆ·ç«¯æ³¨å†Œè¿›eurekaæœåŠ¡åˆ—è¡¨å†…
     service-url: 
       defaultZone: http://eureka7001.com:7001/eureka
   instance:
@@ -67,7 +67,7 @@ mybatis:
   - classpath:mybatis/mapper/**/*.xml
  
 eureka: 
-  client:                                                      # ¿Í»§¶Ë×¢²á½ø eureka ·şÎñÁĞ±íÄÚ
+  client:                                                      # å®¢æˆ·ç«¯æ³¨å†Œè¿› eureka æœåŠ¡åˆ—è¡¨å†…
     service-url: 
       defaultZone: http://eureka7001.com:7001/eureka
   instance:

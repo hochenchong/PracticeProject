@@ -4,7 +4,7 @@ spring:
     - dev
 ---
 server: 
-  port: 7001                                           # ×¢²áÖĞĞÄÕ¼ÓÃ7001¶Ë¿Ú,Ã°ºÅºóÃæ±ØĞëÒªÓĞ¿Õ¸ñ
+  port: 7001                                           # æ³¨å†Œä¸­å¿ƒå ç”¨7001ç«¯å£,å†’å·åé¢å¿…é¡»è¦æœ‰ç©ºæ ¼
    
 spring: 
   profiles: dev
@@ -13,15 +13,15 @@ spring:
     
 eureka: 
   instance: 
-    hostname: eureka7001.com                           # Ã°ºÅºóÃæ±ØĞëÒªÓĞ¿Õ¸ñ
+    hostname: eureka7001.com                           # å†’å·åé¢å¿…é¡»è¦æœ‰ç©ºæ ¼
   client: 
-    register-with-eureka: false                        # µ±Ç°µÄ eureka-server ×Ô¼º²»×¢²á½ø·şÎñÁĞ±íÖĞ
-    fetch-registry: false                              # ²»Í¨¹ı eureka »ñÈ¡×¢²áĞÅÏ¢
+    register-with-eureka: false                        # å½“å‰çš„ eureka-server è‡ªå·±ä¸æ³¨å†Œè¿›æœåŠ¡åˆ—è¡¨ä¸­
+    fetch-registry: false                              # ä¸é€šè¿‡ eureka è·å–æ³¨å†Œä¿¡æ¯
     service-url: 
       defaultZone: http://eureka7001.com:7001/eureka/
 ---
 server: 
-  port: 7001                                           # ×¢²áÖĞĞÄÕ¼ÓÃ7001¶Ë¿Ú,Ã°ºÅºóÃæ±ØĞëÒªÓĞ¿Õ¸ñ
+  port: 7001                                           # æ³¨å†Œä¸­å¿ƒå ç”¨7001ç«¯å£,å†’å·åé¢å¿…é¡»è¦æœ‰ç©ºæ ¼
    
 spring: 
   profiles: test
@@ -30,10 +30,10 @@ spring:
     
 eureka: 
   instance: 
-    hostname: eureka7001.com                           # Ã°ºÅºóÃæ±ØĞëÒªÓĞ¿Õ¸ñ
+    hostname: eureka7001.com                           # å†’å·åé¢å¿…é¡»è¦æœ‰ç©ºæ ¼
   client: 
-    register-with-eureka: false                        # µ±Ç°µÄeureka-server×Ô¼º²»×¢²á½ø·şÎñÁĞ±íÖĞ
-    fetch-registry: false                              # ²»Í¨¹ıeureka»ñÈ¡×¢²áĞÅÏ¢
+    register-with-eureka: false                        # å½“å‰çš„eureka-serverè‡ªå·±ä¸æ³¨å†Œè¿›æœåŠ¡åˆ—è¡¨ä¸­
+    fetch-registry: false                              # ä¸é€šè¿‡eurekaè·å–æ³¨å†Œä¿¡æ¯
     service-url: 
       defaultZone: http://eureka7001.com:7001/eureka/
 
