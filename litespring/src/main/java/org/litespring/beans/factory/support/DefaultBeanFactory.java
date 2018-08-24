@@ -11,6 +11,7 @@ import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 import org.litespring.beans.BeanDefinition;
+import org.litespring.beans.factory.BeanCreationException;
 import org.litespring.beans.factory.BeanFactory;
 import org.litespring.util.ClassUtils;
 
@@ -74,7 +75,7 @@ public class DefaultBeanFactory implements BeanFactory {
 		BeanDefinition beanDefinition = this.getBeanDefinition(beanId);
 		
 		if (beanDefinition == null) {
-			return null;
+			throw new BeanCreationException("Bean Definition does not exist");
 		}
 		// 通过反射创建对象
 		ClassLoader classLoader = ClassUtils.getDefaultClassLoader();
@@ -84,9 +85,7 @@ public class DefaultBeanFactory implements BeanFactory {
 			Class<?> clz = classLoader.loadClass(beanClassName);
 			return clz.newInstance();
 		} catch (Exception e) {
-			e.printStackTrace();
+			throw new BeanCreationException("Create bean for " + beanClassName + " failed",e);
 		}
-		
-		return null;
 	}
 }
