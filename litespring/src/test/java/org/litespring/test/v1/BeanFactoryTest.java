@@ -47,4 +47,17 @@ public class BeanFactoryTest {
 		Assert.fail("BeanDefinitionStoreException 测试失败");
 	}
 
+	/*
+	 * 异常测试：无效的 XML 读取
+	 */
+	@Test
+	public void testInvalidXML() {
+		try {
+			new DefaultBeanFactory("xxx.xml");
+		} catch (BeanDefinitionStoreException e) {
+			return ;
+		}
+		
+		Assert.fail("BeanDefinitionStoreException 测试失败");
+	}
 }
