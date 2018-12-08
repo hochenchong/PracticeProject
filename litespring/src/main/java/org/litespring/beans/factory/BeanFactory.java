@@ -9,7 +9,9 @@ public interface BeanFactory {
 	 * @param beanId
 	 * @return
 	 */
+	/* 2018-12-8 将此方法移动到 BeanDefinitionRegistry 接口下
 	BeanDefinition getBeanDefinition(String beanId);
+	*/
 
 	/**
 	 * 根据 beanId 获取 Bean
