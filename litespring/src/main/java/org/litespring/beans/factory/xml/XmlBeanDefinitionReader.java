@@ -12,6 +12,7 @@ import org.litespring.beans.BeanDefinition;
 import org.litespring.beans.factory.BeanDefinitionStoreException;
 import org.litespring.beans.factory.support.BeanDefinitionRegistry;
 import org.litespring.beans.factory.support.GenericBeanDefinition;
+import org.litespring.core.io.Resource;
 import org.litespring.util.ClassUtils;
 
 /**
@@ -35,12 +36,10 @@ public class XmlBeanDefinitionReader  {
 	 * 使用 dom4j 解析传进来的 xml 文件
 	 * @param configFile
 	 */
-	public void loadBeanDefinitions(String configFile) {
+	public void loadBeanDefinitions(Resource resource) {
 		InputStream is = null;
-		
 		try {
-			ClassLoader classLoader = ClassUtils.getDefaultClassLoader();
-			is = classLoader.getResourceAsStream(configFile);
+			is = resource.getInputStream();
 			SAXReader saxReader = new SAXReader();
 			Document document = saxReader.read(is);
 			
@@ -55,10 +54,10 @@ public class XmlBeanDefinitionReader  {
 				// this.beanDefinitionMap.put(id, beanDefinition);
 				this.beanDefinitionRegistry.registryBeanDefinition(id, beanDefinition);
 			}
-		} catch (DocumentException e) {
-			throw new BeanDefinitionStoreException("IOException parsing XML document " + configFile + " failed", e);
+		} catch (Exception e) {
+			throw new BeanDefinitionStoreException("IOException parsing XML document " + resource.getDescription() + " failed", e);
 		} finally {
-			if (is != null) {
+			if (null != is) {
 				try {
 					is.close();
 				} catch (IOException e) {
