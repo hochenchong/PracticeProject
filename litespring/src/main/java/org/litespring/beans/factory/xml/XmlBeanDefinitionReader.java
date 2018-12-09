@@ -25,6 +25,8 @@ public class XmlBeanDefinitionReader  {
 	public static final String ID_ATTRIBUTE = "id";
 	
 	public static final String CLASS_ATTRIBUTE = "class";
+	
+	public static final String SCOPE_ATTRIBUTE = "scope";
 
 	BeanDefinitionRegistry beanDefinitionRegistry;
 	
@@ -51,6 +53,12 @@ public class XmlBeanDefinitionReader  {
 				String id = element.attributeValue(ID_ATTRIBUTE);
 				String beanClassName = element.attributeValue(CLASS_ATTRIBUTE);
 				BeanDefinition beanDefinition = new GenericBeanDefinition(id, beanClassName);
+				
+				// 判断是否有 scope 属性
+				String scope = element.attributeValue(SCOPE_ATTRIBUTE);
+				if (scope != null) {
+					beanDefinition.setScope(scope);
+				}
 				// this.beanDefinitionMap.put(id, beanDefinition);
 				this.beanDefinitionRegistry.registryBeanDefinition(id, beanDefinition);
 			}
