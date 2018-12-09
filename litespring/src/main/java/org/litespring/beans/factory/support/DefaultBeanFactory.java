@@ -5,11 +5,12 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import org.litespring.beans.BeanDefinition;
 import org.litespring.beans.factory.BeanCreationException;
-import org.litespring.beans.factory.BeanFactory;
+import org.litespring.beans.factory.config.ConfigurableBeanFactory;
 import org.litespring.util.ClassUtils;
 
-public class DefaultBeanFactory implements BeanFactory, BeanDefinitionRegistry {
+public class DefaultBeanFactory implements ConfigurableBeanFactory, BeanDefinitionRegistry {
 	private final Map<String, BeanDefinition> beanDefinitionMap = new ConcurrentHashMap<>();
+	private ClassLoader classLoader;
 	
 	public DefaultBeanFactory() {
 	}
@@ -27,7 +28,7 @@ public class DefaultBeanFactory implements BeanFactory, BeanDefinitionRegistry {
 			throw new BeanCreationException("Bean Definition does not exist");
 		}
 		// 通过反射创建对象
-		ClassLoader classLoader = ClassUtils.getDefaultClassLoader();
+		ClassLoader classLoader = this.getBeanClassLoader();
 		String beanClassName = beanDefinition.getBeanClassName();
 		
 		try {
@@ -45,5 +46,17 @@ public class DefaultBeanFactory implements BeanFactory, BeanDefinitionRegistry {
 	public void registryBeanDefinition(String beanId,
 			BeanDefinition beanDefinition) {
 		this.beanDefinitionMap.put(beanId, beanDefinition);
+	}
+
+	@Override
+	public void setBeanClassLoader(ClassLoader classLoader) {
+		this.classLoader = classLoader;
+	}
+
+	@Override
+	public ClassLoader getBeanClassLoader() {
+		return (this.classLoader != null
+				? this.classLoader
+				: ClassUtils.getDefaultClassLoader());
 	}
 }
