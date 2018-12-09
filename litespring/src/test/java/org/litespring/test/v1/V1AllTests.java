@@ -17,6 +17,6 @@ import org.junit.runners.Suite.SuiteClasses;
 	BeanFactoryTest.class,
 	Dom4jTest.class, 
 	ResourceTest.class})
-public class AllTests {
+public class V1AllTests {
 
 }
