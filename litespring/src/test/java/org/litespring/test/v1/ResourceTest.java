@@ -33,8 +33,13 @@ public class ResourceTest {
 	@Test
 	public void testFileSystemResource() throws IOException {
 		// 获取 petstore-v1.xml 在本机的绝对路径
+		/*
 		String filePath = this.getClass().getResource("/petstore-v1.xml").getFile().toString();
 		Resource resource = new FileSystemResource(filePath);
+		*/
+		
+		// 使用相对路径获取 petstore-v1.xml 文件
+		Resource resource = new FileSystemResource("src/test/resources/petstore-v1.xml");
 		
 		InputStream is = null;
 		
