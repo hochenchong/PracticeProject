@@ -22,5 +22,6 @@
             <td>20</td>
         </tr>
     </table>
+    <a href="/logout" >退出</a>
 </body>
 </html>
