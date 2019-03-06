@@ -26,5 +26,7 @@ hs_err_pid*
 .settings
 .classpath
 .project
+# idea 特定文件
+.idea
 # 项目编译的文件
 target
