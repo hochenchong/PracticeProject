@@ -7,6 +7,12 @@
     http://www.springframework.org/schema/security
     http://www.springframework.org/schema/security/spring-security.xsd">
 
+    <!-- 对某些请求路径单独配置安全策略 -->
+    <http pattern="/images/**" security="none" />
+    <http pattern="/login.html" security="none" />
+    <http pattern="/login/fail.html" security="none" />
+    <http pattern="/register.html" security="none" />
+
     <!--
         auto-config：表示引入了 Spring Security 相关的过滤器
         use-expressions：是否使用 SqEL 表达式
@@ -14,6 +20,16 @@
     <http auto-config="true" use-expressions="true">
         <!-- 所有的请求都需要 ROLE_ADMIN 权限 -->
         <intercept-url pattern="/**" access="hasRole('ROLE_ADMIN')" />
+
+        <!-- 自定义登录页面配置 -->
+        <form-login login-page="/login.html"
+                    default-target-url="/admin/user/list.html"
+                    authentication-failure-url="/login/fail.html"
+                    always-use-default-target="true"
+                    password-parameter="password"
+                    username-parameter="username" />
+        <!-- 关闭 CSRF 攻击功能 -->
+        <csrf disabled="true" />
     </http>
 
     <!-- 授权认证管理器 -->
