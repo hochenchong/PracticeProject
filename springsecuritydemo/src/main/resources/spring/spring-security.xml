@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/security
+    http://www.springframework.org/schema/security/spring-security.xsd">
+
+    <!--
+        auto-config：表示引入了 Spring Security 相关的过滤器
+        use-expressions：是否使用 SqEL 表达式
+    -->
+    <http auto-config="true" use-expressions="true">
+        <!-- 所有的请求都需要 ROLE_ADMIN 权限 -->
+        <intercept-url pattern="/**" access="hasRole('ROLE_ADMIN')" />
+    </http>
+
+    <!-- 授权认证管理器 -->
+    <authentication-manager>
+        <authentication-provider>
+            <!-- 硬编码模式，创建用户并授权 -->
+            <user-service>
+                <!--
+                    遇到的问题：Spring Security 无法登陆，报错：There is no PasswordEncoder mapped for the id "null"
+                    Spring security 5.0 中新增了多种加密方式，也改变了密码的格式
+                    password：{id}encodedPassword
+                    例如：
+                        {bcrypt}$2a$10$dXJ3SW6G7P50lGmMkkmwe.20cQQubK3.HZWzG3YB1tlRy.fqvM/BG
+                        {noop}password
+                        {pbkdf2}5d923b44a6d129f3ddf3e3c8d29412723dcbde72445e8ef6bf3b508fbf17fa4ed4d6b99ca763d8dc
+                        {scrypt}$e0801$8bWJaSu2IKSn9Z9kM+TPXfOc/9bdYSrN1oD9qfVThWEwdRTnO7re7Ei+fUZRJ68k9lTyuTeUp4of4g24hHnazw==$OAOec05+bXxvuu/1qZ6NUR+xQYvYv7BeL1QxwRpY5Pc=
+                        {sha256}97cde38028ad898ebc02e690819fa220e88c62e0699403e94fff291cfffaf8410849f27605abcbc0
+                -->
+                <user name="hochenchong" authorities="ROLE_ADMIN" password="{noop}123456" disabled="false" />
+            </user-service>
+        </authentication-provider>
+    </authentication-manager>
+</beans:beans>
