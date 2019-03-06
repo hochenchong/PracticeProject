@@ -22,6 +22,14 @@
         <intercept-url pattern="/**" access="hasRole('ROLE_ADMIN')" />
 
         <!-- 自定义登录页面配置 -->
+        <!--
+            login-page：自定义登录页 url，默认为 /login
+            default-target-url：默认登录成功后跳转的 url
+            authentication-failure-url: 登录失败后跳转的 url
+            always-use-default-target：是否始终使用默认的地址，即登录成功后是否总是跳转到默认地址
+            password-parameter：密码的请求字段 默认为 password
+            username-parameter：用户名的请求字段 默认为 userName
+        -->
         <form-login login-page="/login.html"
                     default-target-url="/admin/user/list.html"
                     authentication-failure-url="/login/fail.html"
