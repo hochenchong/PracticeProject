@@ -1,5 +1,6 @@
 package hochenchong.hanyi;
 
+import com.alibaba.fastjson.JSON;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -11,6 +12,7 @@ import org.apache.http.util.EntityUtils;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.List;
 
 /**
  * HanyiUtils
@@ -23,7 +25,7 @@ public class HanyiUtils {
     /**
      * @return 汉仪相关字体 json 字符串数据
      */
-    public static String getHanyiFontsInfoJsonStr(){
+    public static String getFontsInfoJsonStr(){
         // 创建 HTTPClient 对象
         CloseableHttpClient httpClient = HttpClients.createDefault();
 
@@ -47,7 +49,7 @@ public class HanyiUtils {
             // 判断返回状态是否为200
             if (response.getStatusLine().getStatusCode() == 200) {
                 resultJson = EntityUtils.toString(response.getEntity(), "UTF-8");
-                System.out.println(resultJson);
+                // System.out.println(resultJson);
                 return resultJson;
             }
         } catch (URISyntaxException e) {
@@ -70,5 +72,13 @@ public class HanyiUtils {
         }
         // 错误则返回 null
         return null;
+    }
+
+    /**
+     * 使用 FastJson 将 json 字符串转为 List
+     * @return 汉仪相关字体信息的 List
+     */
+    public static List<HanyiBean> getFontsInfoBeans() {
+        return JSON.parseArray(getFontsInfoJsonStr(), HanyiBean.class);
     }
 }
