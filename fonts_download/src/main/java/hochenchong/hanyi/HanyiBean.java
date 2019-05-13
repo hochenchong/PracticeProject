@@ -4,7 +4,7 @@ package hochenchong.hanyi;
  * HanyiBean 用于将汉仪官网获取的 json 数据转换为相应的对象
  *
  * @author HochenChong
- * @date 2016/10/31
+ * @date 2019/5/8
  */
 
 public class HanyiBean {
