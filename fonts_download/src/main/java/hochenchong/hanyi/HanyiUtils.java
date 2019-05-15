@@ -9,9 +9,8 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
+import java.io.*;
+import java.net.*;
 import java.util.List;
 
 /**
@@ -80,5 +79,44 @@ public class HanyiUtils {
      */
     public static List<HanyiBean> getFontsInfoBeans() {
         return JSON.parseArray(getFontsInfoJsonStr(), HanyiBean.class);
+    }
+
+    /**
+     *
+     * @param fontDownloadUrl 汉仪字体下载链接
+     * @param pathName 字体保存的路径，包括文件名与后缀
+     */
+    public static String downloadFont(String fontDownloadUrl, String pathName) {
+        URL url = null;
+        try {
+            url = new URL(fontDownloadUrl);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+            return null;
+        }
+        HttpURLConnection conn = null;
+        try {
+            conn = (HttpURLConnection)url.openConnection();
+            conn.setConnectTimeout(10 * 1000);
+            // 防止屏蔽程序抓取而返回403错误
+            // conn.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.108 Safari/537.36");
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+        try (InputStream is = conn.getInputStream();
+             OutputStream os = new FileOutputStream(new File(pathName + ".ttf"));) {
+
+            byte[] buffer = new byte[1024];
+            int length;
+            while ((length = is.read(buffer)) > 0) {
+                os.write(buffer, 0, length);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+        return pathName + " 》》》已下载完成";
     }
 }
