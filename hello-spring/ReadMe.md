@@ -1,6 +1,5 @@
 ## 《玩转 Spring 全家桶》 学习笔记
-### 第一天
-#### 前期准备
+### 前期准备
 > Spring Boot 快速构建官方网站：[https://start.spring.io/](https://start.spring.io/)
 > 
 > Spring Boot 选择当前最新稳定版本：2.1.5
@@ -9,7 +8,7 @@
 > 
 > 点击 “Generate Project” 按钮，下载 demo，使用 IDE 工具导入项目（这里使用的是 IDEA，下面提到的快捷键，默认均为 IDEA 快捷键）
 
-#### Hello Spring
+### Hello Spring
 修改 SpringApplication 类，代码如下
 ```
 @SpringBootApplication
@@ -39,7 +38,8 @@ curl http://localhost:8080/actuator/health
 {"status":"UP"}
 ```
 
-#### 打包项目
+
+### 打包项目
 在 Terminal 中输入以下命令，注意该命令在此项目目录下输入
 ```
 mvn clean package -Dmaven.test.skip
@@ -48,7 +48,8 @@ mvn clean package -Dmaven.test.skip
 
 可以使用命令：```java -jar xxx.jar``` 命令来运行
 
-#### pom.xml 不引入父工程如何引入 spring-boot-starter-parent
+
+### pom.xml 不引入父工程如何引入 spring-boot-starter-parent
 pom.xml 中 project 标签下加入
 ```xml
 	<dependencyManagement>
