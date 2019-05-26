@@ -47,3 +47,39 @@ mvn clean package -Dmaven.test.skip
 以上命令是使用 maven 插件进行打包，并跳过测试，之后就会在项目根目录下的 target 文件夹下生成一个 jar 包。
 
 可以使用命令：```java -jar xxx.jar``` 命令来运行
+
+#### pom.xml 不引入父工程如何引入 spring-boot-starter-parent
+pom.xml 中 project 标签下加入
+```xml
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-parent</artifactId>
+				<version>2.1.5.RELEASE</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+```
+
+build 标签修改为如下
+```xml
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>2.1.5.RELEASE</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+```
