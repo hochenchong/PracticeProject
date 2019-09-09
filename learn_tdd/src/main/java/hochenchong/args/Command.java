@@ -8,8 +8,8 @@ import java.util.regex.Pattern;
  * @author HochenChong
  * @date 2019/09/02
  */
-public class Command {
 
+public class Command {
     private static final Pattern pattern = Pattern.compile("^-?\\d+(\\.\\d+)?$");
     Map<String, String> commandMap = new HashMap<>();
 
@@ -18,31 +18,43 @@ public class Command {
         for (int i = 0; i < commandList.length; i++) {
             String key = commandList[i];
             if (key.startsWith("-")) {
-                // 如果下一个也是 - 开头的，则判断是否是 key
-                if (i + 1 < commandList.length) {
-                    String value = commandList[i + 1];
-                    if (!value.startsWith("-") || isNumber(value)) {
-                        commandMap.put(key.substring(1), value);
-                        i++;
-                    } else {
-                        commandMap.put(key.substring(1), null);
-                    }
-                } else {
+                // 没有下一个值，或者下一个值是 flag 时
+                if (i + 1 >= commandList.length || isFlag(commandList[i + 1])) {
                     commandMap.put(key.substring(1), null);
+                } else {
+                    String value = commandList[i + 1];
+                    commandMap.put(key.substring(1), value);
+                    i++;
                 }
             }
         }
     }
 
-    public static boolean isNumber(String string) {
+    public String getValue(String key) {
+        return commandMap.get(key);
+    }
+
+    private boolean isNumber(String string) {
         if (string == null) {
             return Boolean.FALSE;
         }
         return pattern.matcher(string).matches();
     }
 
-    public String getValue(String key) {
-        System.out.println(commandMap);
-        return commandMap.get(key);
+    /**
+     * 是否是 flag
+     *      1：以 “-” 开头
+     *      2：不是数字
+     * @param value
+     * @return
+     */
+    private boolean isFlag(String value) {
+        if (value.startsWith("-")) {
+            if (isNumber(value)) {
+                return false;
+            }
+            return true;
+        }
+        return false;
     }
 }

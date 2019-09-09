@@ -29,13 +29,13 @@ public class CommandTest {
         assertThat(command1.getValue("d"), is("/usr/local"));
         assertNull(command1.getValue("l"));
     }
-    
-    @Test
+
+/*    @Test
     public void test_is_not_num() {
         String s = "-9";
         System.out.println(Command.isNumber("-1"));
         System.out.println(Command.isNumber("-9"));
         System.out.println(Command.isNumber("-46"));
         System.out.println(Command.isNumber("-1352fasd13"));
-    }
+    }*/
 }
