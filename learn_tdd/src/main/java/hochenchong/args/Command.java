@@ -10,14 +10,15 @@ import java.util.regex.Pattern;
  */
 
 public class Command {
-    private static final Pattern pattern = Pattern.compile("^-?\\d+(\\.\\d+)?$");
+    private static final Pattern NUM_PATTERN = Pattern.compile("^-?\\d+(\\.\\d+)?$");
+    private static final String START_FLAG = "-";
     Map<String, String> commandMap = new HashMap<>();
 
     public Command(String commandStr) {
         String[] commandList = commandStr.split(" ");
         for (int i = 0; i < commandList.length; i++) {
             String key = commandList[i];
-            if (key.startsWith("-")) {
+            if (key.startsWith(START_FLAG)) {
                 // 没有下一个值，或者下一个值是 flag 时
                 if (i + 1 >= commandList.length || isFlag(commandList[i + 1])) {
                     commandMap.put(key.substring(1), null);
@@ -38,7 +39,7 @@ public class Command {
         if (string == null) {
             return Boolean.FALSE;
         }
-        return pattern.matcher(string).matches();
+        return NUM_PATTERN.matcher(string).matches();
     }
 
     /**
@@ -49,12 +50,9 @@ public class Command {
      * @return
      */
     private boolean isFlag(String value) {
-        if (value.startsWith("-")) {
-            if (isNumber(value)) {
-                return false;
-            }
-            return true;
+        if (!value.startsWith(START_FLAG) || isNumber(value)) {
+            return false;
         }
-        return false;
+        return true;
     }
 }
