@@ -14,3 +14,5 @@
 > a. withInitial 方法，接收参数为 Supplier<? extends S> supplier
 > 
 > b. 查看 [https://github.com/hochenchong/PracticeProject/blob/master/java-8-lambdas-exercises/src/main/java/hochenchong/exercises/chapter2/Question2.java](https://github.com/hochenchong/PracticeProject/blob/master/java-8-lambdas-exercises/src/main/java/hochenchong/exercises/chapter2/Question2.java)
+> 
+> c. Yes; Yes; No.
