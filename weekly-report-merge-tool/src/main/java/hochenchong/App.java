@@ -27,7 +27,7 @@ public class App {
         EXCEL_NAME_LIST = new ArrayList<>(3);
         // 获取当前周的周一与周五
         LocalDate thisMonday = LocalDate.now().with(TemporalAdjusters.previousOrSame(DayOfWeek.MONDAY));
-        LocalDate thisFriday = LocalDate.now().with(TemporalAdjusters.nextOrSame(DayOfWeek.FRIDAY));
+        LocalDate thisFriday = thisMonday.with(TemporalAdjusters.nextOrSame(DayOfWeek.FRIDAY));
         EXCEL_NAME_LIST.add(String.format("%s--%s 周工作内容", thisMonday, thisFriday));
 
         // 获取下周的周一与周五
@@ -115,6 +115,8 @@ public class App {
         contentWriteFont.setFontHeightInPoints((short)12);
         contentWriteFont.setFontName("宋体");
         contentWriteCellStyle.setWriteFont(contentWriteFont);
+        // 设置自动换行
+        contentWriteCellStyle.setWrapped(true);
         // 设置垂直居中
         contentWriteCellStyle.setVerticalAlignment(VerticalAlignment.CENTER);
         // 设置边框
