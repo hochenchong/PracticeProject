@@ -44,6 +44,7 @@
       <artifactId>slf4j-simple</artifactId>
       <version>1.7.30</version>
     </dependency>
+
   </dependencies>
 
   <build>
@@ -57,7 +58,7 @@
           </descriptorRefs>
           <archive>
             <manifest>
-              <mainClass>hochenchong.App</mainClass>
+              <mainClass>hochenchong.demo01.Demo01App</mainClass>
             </manifest>
           </archive>
         </configuration>
