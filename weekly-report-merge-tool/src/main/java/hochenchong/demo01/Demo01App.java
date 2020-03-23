@@ -1,6 +1,5 @@
 package hochenchong.demo01;
 
-import com.alibaba.excel.EasyExcel;
 import com.alibaba.excel.util.StringUtils;
 import hochenchong.DataEntity;
 
@@ -53,22 +52,17 @@ public class Demo01App {
             System.out.println("--- 正在处理：" + filePath + " ----");
 
             for (int i = 0; i < 2; i++) {
-                List<DataEntity> list = EasyExcel.read(filePath).head(DataEntity.class).sheet(i).doReadSync();
-                getList(i).addAll(list);
+                getList(i).addAll(Demo01ExcelUtils.readExcel(i, filePath));
             }
         }
 
-        // 对数据进行处理，将 project 为空的数据补全
-        list1 = processListData(list1);
-        list2 = processListData(list2);
-
         // 写入新建的 Excel 中
-        ExcelUtils excelUtils = new ExcelUtils();
+        Demo01ExcelUtils demo01ExcelUtils = new Demo01ExcelUtils();
         for (int i = 0; i < 2; i++) {
-            excelUtils.writerSheet(i, getList(i));
+            demo01ExcelUtils.writerSheet(i, getList(i));
         }
         // 关闭资源
-        excelUtils.close();
+        demo01ExcelUtils.close();
     }
 
     private static List getList(int i) {
@@ -77,25 +71,6 @@ public class Demo01App {
         } else {
             return list2;
         }
-    }
-
-    /**
-     * 处理数据，当某一个 DataEntity 中的 project 属性为空时，则设置为上一个 DataEntity 的 project 属性的值
-     * 为空的情况：读取 Excel 时，project 为合并的单元格时，第一个有值，后面的没有
-     *
-     * @param list
-     * @return
-     */
-    private static List<DataEntity> processListData(List<DataEntity> list) {
-        final String[] string = new String[1];
-
-        return list.stream().map(dataEntity -> {
-            if (dataEntity.getProject() != null && !"".equals(dataEntity.getProject().trim())) {
-                string[0] = dataEntity.getProject().trim();
-            }
-            dataEntity.setProject(string[0]);
-            return dataEntity;
-        }).collect(Collectors.toList());
     }
 
     /**
@@ -111,7 +86,7 @@ public class Demo01App {
         String[] names = file.list();
         if (names != null) {
             filePath.addAll(Arrays.asList(names));
-            filePath = filePath.stream().filter(s -> s.endsWith(".xlsx") || s.endsWith(".xls"))
+            filePath = filePath.stream().filter(s -> s.endsWith(".xlsx"))
                     .map(s -> directoryPath + File.separator + s)
                     .collect(Collectors.toList());
         }

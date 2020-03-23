@@ -30,24 +30,23 @@ import java.util.stream.Collectors;
  * @description 周报合并工具 v1.1 版本使用的 Excel 写入数据工具类
  */
 
-public class ExcelUtils {
+public class Demo01ExcelUtils {
 
     private ExcelWriter excelWriter;
     // 生成的文件路径
-    private String newFilePath;
+    private String buildPath;
     // Excel Sheet 的名称列表
     private List<String> excelNameList;
 
-    public ExcelUtils() {
-        setExcelName();
-
-        excelWriter = EasyExcel.write(newFilePath, DataEntity.class).build();
+    public Demo01ExcelUtils() {
+        init();
     }
 
     /**
-     * 设置生成 Excel 相关名字与路径
+     * 初始化生成 Excel 相关名字，路径
+     * 初始化 excelWriter
      */
-    private void setExcelName() {
+    private void init() {
         excelNameList = new ArrayList<>(3);
         // 获取当前周的周一与周五
         LocalDate thisMonday = LocalDate.now().with(TemporalAdjusters.previousOrSame(DayOfWeek.MONDAY));
@@ -61,7 +60,20 @@ public class ExcelUtils {
 
         excelNameList.add(String.format("开发团队工作计划周报汇总-%s--%s", thisMonday, thisFriday));
 
-        newFilePath = System.getProperty("user.dir") + File.separator + excelNameList.get(2) + ".xlsx";
+        buildPath = System.getProperty("user.dir") + File.separator + excelNameList.get(2) + ".xlsx";
+
+        excelWriter = EasyExcel.write(buildPath, DataEntity.class).build();
+    }
+
+    /**
+     * 读取 Excel 中的内容
+     *
+     * @param sheetNo
+     * @param pathName Excel 文件路径
+     * @return
+     */
+    public static List<DataEntity> readExcel(Integer sheetNo, String pathName) {
+        return EasyExcel.read(pathName).head(DataEntity.class).sheet(sheetNo).doReadSync();
     }
 
     /**
@@ -71,6 +83,9 @@ public class ExcelUtils {
      * @param list    要写入的数据
      */
     public void writerSheet(Integer sheetNo, List<DataEntity> list) {
+        // 对数据进行处理，将 project 为空的数据补全
+        list = processNullProject(list);
+
         // 把 sheet设置为不需要头部。不然会输出 sheet 的头部，这样看起来第一个 table 就有 2 个头部
         WriteSheet writeSheet = EasyExcel.writerSheet(sheetNo, excelNameList.get(sheetNo)).needHead(Boolean.FALSE).registerWriteHandler(getHorizontalCellStyleStrategy()).build();
 
@@ -110,9 +125,28 @@ public class ExcelUtils {
         if (excelWriter != null) {
             excelWriter.finish();
             System.out.println("处理完成，生成的周报路径为：");
-            System.out.println(newFilePath);
-            System.out.println("------- 欢迎使用，下次再回！ -------");
+            System.out.println(buildPath);
+            System.out.println("------- 欢迎使用，下次再会！ -------");
         }
+    }
+
+    /**
+     * 处理数据，当某一个 DataEntity 中的 project 属性为空时，则设置为上一个 DataEntity 的 project 属性的值
+     * 为空的情况：读取 Excel 时，project 为合并的单元格时，第一个有值，后面的没有
+     *
+     * @param list
+     * @return
+     */
+    private static List<DataEntity> processNullProject(List<DataEntity> list) {
+        final String[] string = new String[1];
+
+        return list.stream().map(dataEntity -> {
+            if (dataEntity.getProject() != null && !"".equals(dataEntity.getProject().trim())) {
+                string[0] = dataEntity.getProject().trim();
+            }
+            dataEntity.setProject(string[0]);
+            return dataEntity;
+        }).collect(Collectors.toList());
     }
 
     // 设置 Excel 的样式
