@@ -23,7 +23,8 @@ public class GeneratePrimes {
         // the only valid case
         if (maxValue >= 2) {
             // declarations
-            int s = maxValue + 1; // size of array
+            // size of array
+            int s = maxValue + 1;
             boolean[] f = new boolean[s];
             int i;
 
@@ -39,7 +40,8 @@ public class GeneratePrimes {
             int j;
             for (i = 2; i < Math.sqrt(s) + 1; i++) {
                 for (j = 2 * i; j < s; j += i) {
-                    f[j] = false; // multiple is not prime
+                    // multiple is not prime
+                    f[j] = false;
                 }
             }
 
@@ -47,7 +49,8 @@ public class GeneratePrimes {
             int count = 0;
             for (i = 0; i < s; i++) {
                 if (f[i]) {
-                    count++; // bump count.
+                    // bump count.
+                    count++;
                 }
             }
 
@@ -63,7 +66,8 @@ public class GeneratePrimes {
 
             // return the primes
             return primes;
-        } else { // maxValue < 2
+        } else {
+            // maxValue < 2
             // return null array if bad input
             return new int[0];
         }
