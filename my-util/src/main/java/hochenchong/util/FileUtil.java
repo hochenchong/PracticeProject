@@ -61,7 +61,13 @@ public class FileUtil {
      * @param charsetName 编码
      */
     public static void contentToFile(String filePath, String content, String charsetName) {
-        try (OutputStreamWriter outputStreamWriter = new OutputStreamWriter(new FileOutputStream(new File(filePath)), charsetName)) {
+        File file = new File(filePath);
+        // 如果文件路径的父目录不存在，则创建其父目录
+        if (!file.getParentFile().exists()) {
+            file.getParentFile().mkdirs();
+        }
+
+        try (OutputStreamWriter outputStreamWriter = new OutputStreamWriter(new FileOutputStream(file), charsetName)) {
             outputStreamWriter.write(content);
             outputStreamWriter.flush();
         } catch (IOException e) {
