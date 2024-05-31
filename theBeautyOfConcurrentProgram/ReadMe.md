@@ -5,7 +5,7 @@
 
 ---
 
-### 第一章
+### 第 1 章 并发编程线程基础
 #### 1.2 线程创建与运行
 * [ThreadTest](./src/chapter01/ThreadTest.java)
 
@@ -26,6 +26,13 @@
 
 #### 1.11 ThreadLocal
 * [ThreadLocalTest](./src/chapter01/ThreadLocalTest.java)
+
+---
+
+### 第 2 章 并发编程的其他基础知识
+
+#### 2.11 伪共享
+* [TestForContent](./src/chapter02/TestForContent.java)
 
 
 ---
