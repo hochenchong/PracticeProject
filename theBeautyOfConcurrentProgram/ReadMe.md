@@ -34,6 +34,18 @@
 #### 2.11 伪共享
 * [TestForContent](./src/chapter02/TestForContent.java)
 
+---
+
+### 第 6 章 Java 并发包中锁原理剖析
+
+#### 6.2 抽象同步队列 AQS 概述
+* [NonReentrantLock](./src/chapter06/NonReentrantLock.java)
+
+#### 6.3 独占锁 ReentrantLock 的原理
+* [ReentrantLockList](./src/chapter06/ReentrantLockList.java)
+
+#### 6.4 读写锁 ReentrantReadWriteLock 的原理
+* [ReentrantReadWriteLockList](./src/chapter06/ReentrantReadWriteLockList.java)
 
 ---
 
