@@ -55,6 +55,12 @@
 * [CountDownLatchDemo1](./src/chapter10/CountDownLatchDemo1.java)
 * [CountDownLatchDemo2](./src/chapter10/CountDownLatchDemo2.java)
 
+#### 10.2 回环屏障CyclicBarrier原理探究
+* [CycleBarrierDemo1](./src/chapter10/CycleBarrierDemo1.java)
+* [CycleBarrierDemo2](./src/chapter10/CycleBarrierDemo2.java)
+
+#### 10.3 信号量 Semaphore 原理探究
+* [SemaphoreDemo1](./src/chapter10/SemaphoreDemo1.java)
 
 ### 后记
 时间：2024-05-31
