@@ -1,7 +1,7 @@
 ## Java 并发编程之美
 
 ### 前言
-该项目记录一下读《Java 并发编程之美》时，书中的代码。
+该项目记录一下读《Java 并发编程之美》时，书中的代码（并不一定和书中一样）。
 
 ---
 
@@ -76,7 +76,13 @@
 #### 11.9 线程池使用FutureTask时需要注意的事情
 * [FutureTest](./src/chapter11/FutureTest.java)
 
+#### 11.10 使用 ThreadLocal 不当可能会导致内存泄漏
+* [ThreadPoolTest](./src/chapter11/ThreadPoolTest.java)
 
+---
 
 ### 后记
-时间：2024-05-31
+
+开始时间：2024-05-31
+
+结束时间：2024-06-04
