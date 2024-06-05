@@ -15,7 +15,8 @@
 
 #### 2.2 显式使用线程池实现异步编程
 * [ThreadPoolExample](./src/chapter02/ThreadPoolExample.java)
-* 
+* [AsyncThreadPoolExample](./src/chapter02/AsyncThreadPoolExample.java)
+
 ---
 
 ### 后记
