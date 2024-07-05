@@ -19,12 +19,27 @@ public class XMLUtil {
         try {
             DocumentBuilder builder = factory.newDocumentBuilder();
             Document doc = builder.parse(new File("the-art-of-design-patterns/config.xml"));
-
             // 获取文本结点
             NodeList list = doc.getElementsByTagName(tagName);
             Node node = list.item(0).getFirstChild();
             return node.getNodeValue().trim();
         } catch (Exception e) {
+            // 简单打印
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static Object getBean(String tagName) {
+        String tagValue = getString(tagName);
+        if (tagValue == null) {
+            return null;
+        }
+        try {
+            Class<?> aClass = Class.forName(tagValue);
+            return aClass.getDeclaredConstructor().newInstance();
+        } catch (Exception e) {
+            // 简单打印
             e.printStackTrace();
             return null;
         }

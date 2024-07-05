@@ -10,4 +10,8 @@ public class XMLTagNameConstant {
      * 图表类型
      */
     public static final String CHART_TYPE = "chartType";
+    /**
+     * 日志记录器工厂类
+     */
+    public static final String LOGGER_FACTORY = "loggerFactory";
 }
