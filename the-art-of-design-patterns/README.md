@@ -65,7 +65,9 @@
 通过一个领导者，逐步构建一个复杂对象
 也可以将领导者的构建方法，写在抽象 builder 对象中，提供统一步骤的构建方式
 * [客户端使用：ActorClient](./src/pattern05/ActorClient.java)
-还有种形式的，调用的大部分方法，返回值都是 Builder 对象，直到调用 build 方法才返回最终的对象。通过链式调用的方式，代码可读性更强，结构更清晰
+
+还有种形式的，调用的大部分方法，返回值都是 Builder 对象，直到调用 build 方法才返回最终的对象。通过链式调用的方式，代码可读性更强，结构更清晰。例如
+* [BuilderActor](./src/pattern05/BuilderActor.java)
 
 ---
 
