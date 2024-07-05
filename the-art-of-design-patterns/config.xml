@@ -6,4 +6,6 @@
     <loggerFactory>pattern02.factoryMethod.DatabaseLoggerFactory</loggerFactory>
     <!-- 抽象工厂模式 -->
     <skinFactory>pattern03.SpringSkinFactory</skinFactory>
+    <!-- 建造者模式 -->
+    <actorBuilder>pattern05.HeroBuilder</actorBuilder>
 </config>

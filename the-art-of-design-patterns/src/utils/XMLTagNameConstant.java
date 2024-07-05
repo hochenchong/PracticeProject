@@ -18,4 +18,8 @@ public class XMLTagNameConstant {
      * 皮肤工厂类
      */
     public static final String SKIN_FACTORY = "skinFactory";
+    /**
+     * 角色建造者类
+     */
+    public static final String ACTOR_BUILDER = "actorBuilder";
 }
