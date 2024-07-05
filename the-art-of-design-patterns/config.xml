@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <config>
+    <!-- 简单工厂模式 -->
     <chartType>pie</chartType>
+    <!-- 工厂方法模式 -->
     <loggerFactory>pattern02.factoryMethod.DatabaseLoggerFactory</loggerFactory>
+    <!-- 抽象工厂模式 -->
+    <skinFactory>pattern03.SpringSkinFactory</skinFactory>
 </config>
