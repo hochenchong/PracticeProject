@@ -14,8 +14,10 @@
 * [懒汉式单例：LazySingleton](./src/pattern01/LazySingleton.java)
 * [IoDH 代理，静态内部类：Singleton](./src/pattern01/Singleton.java)
 
+
 #### 简单工厂模式（Simple Factory Pattern）
 [pattern02/simple](./src/pattern02/simple)
+
 不属于 GoF 23 种设计模式，作为学习其他工厂模式的入门
 通过 config.xml 配置来修改读取的要加载的图形类型，而不修改客户端的代码
 * [ChartFactory](./src/pattern02/simple/ChartFactory.java)
@@ -61,7 +63,7 @@
 使用序列化的方式则为深克隆
 
 
-#### 建造者模式
+#### 建造者模式（Builder Pattern）
 通过一个领导者，逐步构建一个复杂对象
 也可以将领导者的构建方法，写在抽象 builder 对象中，提供统一步骤的构建方式
 * [客户端使用：ActorClient](./src/pattern05/ActorClient.java)
@@ -72,6 +74,13 @@
 ---
 
 ### 结构型设计模式
+
+#### 适配器模式（Adapter Pattern）
+适配器模式可以分为两种：
+1. **对象适配器模式**：通过组合来实现适配器功能。
+* [客户端使用：AdapterClient](./src/pattern11/AdapterClient.java)
+* [适配器：OperationAdapter](./src/pattern11/OperationAdapter.java)
+2. **类适配器模式**：通过继承来实现适配器功能。
 
 
 ---

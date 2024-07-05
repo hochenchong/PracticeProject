@@ -22,4 +22,8 @@ public class XMLTagNameConstant {
      * 角色建造者类
      */
     public static final String ACTOR_BUILDER = "actorBuilder";
+    /**
+     * 操作适配器
+     */
+    public static final String OPERATION_ADAPTER = "operationAdapter";
 }

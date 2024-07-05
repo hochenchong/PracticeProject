@@ -8,4 +8,7 @@
     <skinFactory>pattern03.SpringSkinFactory</skinFactory>
     <!-- 建造者模式 -->
     <actorBuilder>pattern05.HeroBuilder</actorBuilder>
+
+    <!-- 适配器模式 -->
+    <operationAdapter>pattern11.OperationAdapter</operationAdapter>
 </config>
