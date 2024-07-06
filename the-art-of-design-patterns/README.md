@@ -124,6 +124,15 @@
 * String 类也使用了，以此来减少内存中对象的数量
 
 #### 代理模式（Proxy Pattern）
+[pattern17](./src/pattern17)
+* 代理对象，由代理对象控制对原对象的引用。
+* 以查询系统为例
+* [客户端使用：ProxyClient](./src/pattern17/ProxyClient.java)
+* [代理对象：SearcherProxy](./src/pattern17/SearcherProxy.java)
+* 静态代理，提前写好
+* 动态代理，运行时动态创建代理类。例如 aop，事务管理等。动态代理，JDK 的 Proxy 或者 CGLib 等工具
+* 与装饰模式区别，职责不同：代理是扩展的职责与原有职责不属于同一个问题域，而装饰的同类职责
+
 
 ---
 

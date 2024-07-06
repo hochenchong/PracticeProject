@@ -33,4 +33,8 @@ public class XMLTagNameConstant {
      */
     public static final String IMG_BRIDGE = "imgBridge";
     public static final String SYSTEM_BRIDGE = "systemBridge";
+    /**
+     * 代理模式
+     */
+    public static final String PROXY = "proxy";
 }
