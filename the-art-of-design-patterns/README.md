@@ -14,61 +14,52 @@
 * [懒汉式单例：LazySingleton](./src/pattern01/LazySingleton.java)
 * [IoDH 代理，静态内部类：Singleton](./src/pattern01/Singleton.java)
 
-
 #### 简单工厂模式（Simple Factory Pattern）
 [pattern02/simple](./src/pattern02/simple)
-
-不属于 GoF 23 种设计模式，作为学习其他工厂模式的入门
-通过 config.xml 配置来修改读取的要加载的图形类型，而不修改客户端的代码
+* 不属于 GoF 23 种设计模式，作为学习其他工厂模式的入门
+* 通过 config.xml 配置来修改读取的要加载的图形类型，而不修改客户端的代码
 * [ChartFactory](./src/pattern02/simple/ChartFactory.java)
 * [客户端使用：Client](./src/pattern02/simple/Client.java)
-
-缺点：加新的类型，需要修改静态工厂类
-
+* 缺点：加新的类型，需要修改静态工厂类
 
 #### 工厂方法模式（Factory Method）
 [pattern02/factoryMethod](./src/pattern02/factoryMethod)
-又称为工厂模式，虚拟构造器模式，或多态工厂模式
-提供一个抽象工厂接口，子类来实现工厂方法，创建具体的产品对象
-以日志记录器为例
+* 又称为工厂模式，虚拟构造器模式，或多态工厂模式
+* 提供一个抽象工厂接口，子类来实现工厂方法，创建具体的产品对象
+* 以日志记录器为例
 * [LoggerFactory](./src/pattern02/factoryMethod/LoggerFactory.java)
 * [客户端使用：LoggerClient](./src/pattern02/factoryMethod/LoggerClient.java)
 * 代码可以调整为，工厂不返回 Logger，而是提供方法直接调用即可，隐藏返回的 Logger，如继承 [AbstractLoggerFactory](./src/pattern02/factoryMethod/AbstractLoggerFactory.java)
-
-解决了简单工厂模式，加新类型不需要修改抽象的工厂类
-但是加一个类型，就需要加一个新的工厂类，容易造成类泛滥
-
+* 解决了简单工厂模式，加新类型不需要修改抽象的工厂类
+* 但是加一个类型，就需要加一个新的工厂类，容易造成类泛滥
 
 #### 抽象工厂模式（Abstract Factory Pattern）
 [pattern03](./src/pattern03)
-创建相关或依赖对象的家族，而不是具体类
-以界面皮肤库设计为例
+* 创建相关或依赖对象的家族，而不是具体类
+* 以界面皮肤库设计为例
 * [SkinFactory](./src/pattern03/SkinFactory.java)
 * [客户端使用：SkinClient](./src/pattern03/SkinClient.java)
-
-抽象工厂模式中，增加新的产品族很方便，实现 SkinFactory 即可
-但是增加新的产品等级结构很麻烦，需要修改 SkinFactory，导致所有子类都需要修改
-所以需要前期就考虑全面，不然会改动很大
-
+* 抽象工厂模式中，增加新的产品族很方便，实现 SkinFactory 即可
+* 但是增加新的产品等级结构很麻烦，需要修改 SkinFactory，导致所有子类都需要修改
+* 所以需要前期就考虑全面，不然会改动很大
 
 #### 原型模式（Prototype Pattern）
-复制现有对象来创建对象，如果通过克隆，需要注意深克隆与浅克隆
-或者通过序列化的方式，再反序列化为对象
-优点在性能好，尤其在创建复杂对象时
-以周报为例
+[pattern04](./src/pattern04)
+* 复制现有对象来创建对象，如果通过克隆，需要注意深克隆与浅克隆
+* 或者通过序列化的方式，再反序列化为对象
+* 优点在性能好，尤其在创建复杂对象时
+* 以周报为例
 * [WeeklyLog](./src/pattern04/WeeklyLog.java)
 * [客户端使用：WeeklyLogClient](./src/pattern04/WeeklyLogClient.java)
-
-默认的克隆是浅克隆
-使用序列化的方式则为深克隆
-
+* 默认的克隆是浅克隆
+* 使用序列化的方式则为深克隆
 
 #### 建造者模式（Builder Pattern）
-通过一个领导者，逐步构建一个复杂对象
-也可以将领导者的构建方法，写在抽象 builder 对象中，提供统一步骤的构建方式
+[pattern05](./src/pattern05)
+* 通过一个领导者，逐步构建一个复杂对象
+* 也可以将领导者的构建方法，写在抽象 builder 对象中，提供统一步骤的构建方式
 * [客户端使用：ActorClient](./src/pattern05/ActorClient.java)
-
-还有种形式的，调用的大部分方法，返回值都是 Builder 对象，直到调用 build 方法才返回最终的对象。通过链式调用的方式，代码可读性更强，结构更清晰。例如
+* 还有种形式的，调用的大部分方法，返回值都是 Builder 对象，直到调用 build 方法才返回最终的对象。通过链式调用的方式，代码可读性更强，结构更清晰。例如
 * [BuilderActor](./src/pattern05/BuilderActor.java)
 
 ---
@@ -76,25 +67,25 @@
 ### 结构型设计模式
 
 #### 适配器模式（Adapter Pattern）
-适配器模式可以分为两种：
+[pattern11](./src/pattern11)
 1. **对象适配器模式**：通过组合来实现适配器功能。
 * [客户端使用：AdapterClient](./src/pattern11/AdapterClient.java)
 * [适配器：OperationAdapter](./src/pattern11/OperationAdapter.java)
 2. **类适配器模式**：通过继承来实现适配器功能。
 3. **缺省适配器模式**：不需要实现接口提供的所有方法，设计一个抽象类实现该接口，对方法提供默认实现（空方法）
 
-
 #### 桥接模式（Bridge Pattern）
-将不同纬度的两个类建立连接
-以不同图片格式解析，和不同操作系统展示图片为例
+[pattern12](./src/pattern12)
+* 将不同纬度的两个类建立连接
+* 以不同图片格式解析，和不同操作系统展示图片为例
 * [客户端使用：ImageClient](./src/pattern12/ImageClient.java)
 * [图片格式解析抽象类：Image](./src/pattern12/Image.java)
 * [操作系统显示接口：SystemImp](./src/pattern12/SystemImp.java)
 * 处理多维度问题
 
-
 #### 组合模式（Composite Pattern）
-* 处理树形结构
+[pattern13](./src/pattern13)
+* 处理树形结构，强调将对象组合成更复杂的结构，所以叫组合模式
 * 将叶子结点和非叶子结点都看成节点来处理，叶子节点没有子节点
 * 组合模式使得用户对单个对象和组合对象的使用具有一致性。
 * 
@@ -103,6 +94,13 @@
 * [抽象文件类：AbstractFile](./src/pattern13/AbstractFile.java)
 * **透明组合模式**：不够安全，叶子构件需要处理 add，remove 之类的方法，对叶子构件是无意义的
 * **安全组合模式**：不够透明，即抽象组件不包含叶子构件没有的方法，例如 add，remove 之类的。Java AWT 中使用的组合模式就是安全组合模式
+
+#### 装饰器模式（Decorator Pattern）
+[pattern14](./src/pattern14)
+* 以图形界面构件库为例
+* [客户端使用：DecoratorClient](./src/pattern14/DecoratorClient.java)
+* 通过装饰类，扩展原本组件的功能
+* 例如 Java IO 流
 
 ---
 
