@@ -92,6 +92,18 @@
 * [操作系统显示接口：SystemImp](./src/pattern12/SystemImp.java)
 * 处理多维度问题
 
+
+#### 组合模式（Composite Pattern）
+* 处理树形结构
+* 将叶子结点和非叶子结点都看成节点来处理，叶子节点没有子节点
+* 组合模式使得用户对单个对象和组合对象的使用具有一致性。
+* 
+* 以杀毒软件扫描文件夹和文件为例，将文件夹和文件都看成抽象文件（有点 Linux 里的“万物皆为文件”意思）
+* [客户端使用：VirusClient](./src/pattern13/VirusClient.java)
+* [抽象文件类：AbstractFile](./src/pattern13/AbstractFile.java)
+* **透明组合模式**：不够安全，叶子构件需要处理 add，remove 之类的方法，对叶子构件是无意义的
+* **安全组合模式**：不够透明，即抽象组件不包含叶子构件没有的方法，例如 add，remove 之类的。Java AWT 中使用的组合模式就是安全组合模式
+
 ---
 
 ### 行为型设计模式
