@@ -112,7 +112,16 @@
 * 降低客户端与子系统对耦合
 
 #### 享元模式（Flyweight Pattern）
-
+[pattern16](./src/pattern16)
+* 实现对象的复用
+* 享：共享，元：元素/资源
+* 以围棋黑白子为例
+* [客户端使用：FlyweightClient](./src/pattern16/FlyweightClient.java)
+* 内部共享，如棋子颜色
+* 外部则通过传入的方式，如 [Coordinates](./src/pattern16/Coordinates.java)
+* 一般和工厂模式或者组合模式配合使用
+* Integer 类就使用了享元模式，默认先创建和缓存 -128～127 之间的 Integer 对象，需要的是直接返回，而不是创建新的对象
+* String 类也使用了，以此来减少内存中对象的数量
 
 #### 代理模式（Proxy Pattern）
 
