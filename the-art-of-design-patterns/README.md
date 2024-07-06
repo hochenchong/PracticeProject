@@ -81,7 +81,16 @@
 * [客户端使用：AdapterClient](./src/pattern11/AdapterClient.java)
 * [适配器：OperationAdapter](./src/pattern11/OperationAdapter.java)
 2. **类适配器模式**：通过继承来实现适配器功能。
+3. **缺省适配器模式**：不需要实现接口提供的所有方法，设计一个抽象类实现该接口，对方法提供默认实现（空方法）
 
+
+#### 桥接模式（Bridge Pattern）
+将不同纬度的两个类建立连接
+以不同图片格式解析，和不同操作系统展示图片为例
+* [客户端使用：ImageClient](./src/pattern12/ImageClient.java)
+* [图片格式解析抽象类：Image](./src/pattern12/Image.java)
+* [操作系统显示接口：SystemImp](./src/pattern12/SystemImp.java)
+* 处理多维度问题
 
 ---
 

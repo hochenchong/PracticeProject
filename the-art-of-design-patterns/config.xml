@@ -11,4 +11,7 @@
 
     <!-- 适配器模式 -->
     <operationAdapter>pattern11.OperationAdapter</operationAdapter>
+    <!-- 桥接模式 -->
+    <imgBridge>pattern12.image.JPGImage</imgBridge>
+    <systemBridge>pattern12.system.LinuxImp</systemBridge>
 </config>

@@ -22,8 +22,15 @@ public class XMLTagNameConstant {
      * 角色建造者类
      */
     public static final String ACTOR_BUILDER = "actorBuilder";
+
     /**
      * 操作适配器
      */
     public static final String OPERATION_ADAPTER = "operationAdapter";
+    /**
+     * 桥接模式
+     *
+     */
+    public static final String IMG_BRIDGE = "imgBridge";
+    public static final String SYSTEM_BRIDGE = "systemBridge";
 }
