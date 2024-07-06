@@ -3,17 +3,17 @@
     <!-- 简单工厂模式 -->
     <chartType>pie</chartType>
     <!-- 工厂方法模式 -->
-    <loggerFactory>pattern02.factoryMethod.DatabaseLoggerFactory</loggerFactory>
+    <loggerFactory>creational.factory.factoryMethod.DatabaseLoggerFactory</loggerFactory>
     <!-- 抽象工厂模式 -->
-    <skinFactory>pattern03.SpringSkinFactory</skinFactory>
+    <skinFactory>creational.abstractFactory.SpringSkinFactory</skinFactory>
     <!-- 建造者模式 -->
-    <actorBuilder>pattern05.HeroBuilder</actorBuilder>
+    <actorBuilder>creational.builder.HeroBuilder</actorBuilder>
 
     <!-- 适配器模式 -->
-    <operationAdapter>pattern11.OperationAdapter</operationAdapter>
+    <operationAdapter>structural.adapter.OperationAdapter</operationAdapter>
     <!-- 桥接模式 -->
-    <imgBridge>pattern12.image.JPGImage</imgBridge>
-    <systemBridge>pattern12.system.LinuxImp</systemBridge>
+    <imgBridge>structural.bridge.image.JPGImage</imgBridge>
+    <systemBridge>structural.bridge.system.LinuxImp</systemBridge>
     <!-- 代理模式 -->
-    <proxy>pattern17.SearcherProxy</proxy>
+    <proxy>structural.proxy.SearcherProxy</proxy>
 </config>
