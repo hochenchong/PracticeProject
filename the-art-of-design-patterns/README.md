@@ -102,6 +102,20 @@
 * 通过装饰类，扩展原本组件的功能
 * 例如 Java IO 流
 
+#### 外观模式（Facade Pattern）
+[pattern15](./src/pattern15)
+* 对客户端调用来说，只要对外观类处理即可，里面怎么调用子系统无需关注
+* 对于子系统，也只是将外观类当作一个客户端
+* 以文件加密模块为例
+* [客户端使用：FacadeClient](./src/pattern15/FacadeClient.java)
+* [外观类：EncryptFacade](./src/pattern15/EncryptFacade.java)
+* 降低客户端与子系统对耦合
+
+#### 享元模式（Flyweight Pattern）
+
+
+#### 代理模式（Proxy Pattern）
+
 ---
 
 ### 行为型设计模式
