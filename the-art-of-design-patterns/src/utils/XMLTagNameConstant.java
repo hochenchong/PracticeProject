@@ -37,4 +37,10 @@ public class XMLTagNameConstant {
      * 代理模式
      */
     public static final String PROXY = "proxy";
+
+    /**
+     * 命令模式
+     */
+    public static final String COMMAND1 = "command1";
+    public static final String COMMAND2 = "command2";
 }

@@ -146,6 +146,12 @@
 * [客户端使用：ChainClient](src/behavioral/chainOfResponsibility/ChainClient.java)
 * 例子：web 应用中的过滤器（Filter）链
 
+#### 命令模式（Command Pattern）
+[command](src/behavioral/command)
+* 请求发送者与接收者解耦
+* [客户端使用：CommandClient](src/behavioral/command/CommandClient.java)
+* 将请求者的操作，与传入的命令交流。由命令来与接收者打交道。而请求者不需要知道具体的接收者是谁
+
 ---
 
 ### 后记
