@@ -139,6 +139,13 @@
 
 ### 行为型设计模式
 
+#### 职责链模式（Chain of Responsibility Pattern）
+[chainOfResponsibility](src/behavioral/chainOfResponsibility)
+* 请求的链式处理
+* 以采购单分级审批为例
+* [客户端使用：ChainClient](src/behavioral/chainOfResponsibility/ChainClient.java)
+* 例子：web 应用中的过滤器（Filter）链
+
 ---
 
 ### 后记
