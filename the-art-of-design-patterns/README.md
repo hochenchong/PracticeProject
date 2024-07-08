@@ -180,27 +180,32 @@
 
 #### 备忘录模式（Memento Pattern）
 [memento](src/behavioral/memento)
-
+* 撤销功能的实现
+* 以中国象棋棋子撤销功能为例
+* [客户端使用：MementoClient](src/behavioral/memento/MementoClient.java)
+* 原发器和备忘录类放一个包中，满足默认的包内可见行，或者将备忘录类作为原发器类的内部类，只有原发器类才能访问备忘录中的数据
+* 使用频率不太高
+* 缺点：资源消耗过大
 
 #### 观察者模式（Observer Pattern）
 [observer](src/behavioral/observer)
-
+* [客户端使用：ObserverClient](src/behavioral/observer/ObserverClient.java)
 
 #### 状态模式（State Pattern）
 [state](src/behavioral/state)
-
+* [客户端使用：StateClient](src/behavioral/state/StateClient.java)
 
 #### 策略模式（Strategy Pattern）
 [strategy](src/behavioral/strategy)
-
+* [客户端使用：StrategyClient](src/behavioral/strategy/StrategyClient.java)
 
 #### 模板方法模式（Template Method Pattern）
 [template](src/behavioral/template)
-
+* [客户端使用：TemplateClient](src/behavioral/template/TemplateClient.java)
 
 #### 访问者模式（Visitor Pattern）
 [visitor](src/behavioral/visitor)
-
+* [客户端使用：VisitorClient](src/behavioral/visitor/VisitorClient.java)
 
 ---
 
