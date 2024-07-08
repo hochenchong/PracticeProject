@@ -194,9 +194,12 @@
 * 以多人联机对战游戏为例
 * [客户端使用：ObserverClient](src/behavioral/observer/ObserverClient.java)
 * 使用频率最高的设计模式之一
+* 在 JDK java.util包中，提供了 Observable 类以及 Observer 接口
 
 #### 状态模式（State Pattern）
 [state](src/behavioral/state)
+* 对象状态及其转换
+* 以账户余额状态为例
 * [客户端使用：StateClient](src/behavioral/state/StateClient.java)
 
 #### 策略模式（Strategy Pattern）
