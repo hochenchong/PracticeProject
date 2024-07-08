@@ -189,7 +189,11 @@
 
 #### 观察者模式（Observer Pattern）
 [observer](src/behavioral/observer)
+* 对象间的联动
+* 别名：发布-订阅模式
+* 以多人联机对战游戏为例
 * [客户端使用：ObserverClient](src/behavioral/observer/ObserverClient.java)
+* 使用频率最高的设计模式之一
 
 #### 状态模式（State Pattern）
 [state](src/behavioral/state)
