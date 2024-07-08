@@ -163,7 +163,12 @@
 
 #### 迭代器模式（Iterator Pattern）
 [iterator](src/behavioral/iterator)
-
+* 遍历聚合对象中的元素
+* 将遍历数据，与数据存储分离。通过迭代器，无需暴露聚合类的内部属性
+* 管理系统数据遍历为例
+* [客户端使用：IteratorClient](src/behavioral/iterator/IteratorClient.java)
+* [抽象迭代器：AbstractIterator](src/behavioral/iterator/AbstractIterator.java)
+* JDK 使用内部类实现迭代器
 
 #### 中介者模式（Mediator Pattern）
 [mediator](src/behavioral/mediator)
