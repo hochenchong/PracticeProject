@@ -48,4 +48,8 @@ public class XMLTagNameConstant {
      * 策略模式
      */
     public static final String STRATEGY = "strategy";
+    /**
+     * 模板方法模式
+     */
+    public static final String TEMPLATE = "template";
 }

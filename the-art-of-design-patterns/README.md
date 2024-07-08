@@ -213,7 +213,11 @@
 
 #### 模板方法模式（Template Method Pattern）
 [template](src/behavioral/template)
+* 定义算法的框架
+* 使用继承的方式，父类定义好步骤，子类覆盖其中的某些步骤
+* 以银行利息计算为例
 * [客户端使用：TemplateClient](src/behavioral/template/TemplateClient.java)
+* 使用频率较高，广泛应用于框架设计（Spring，JUnit 等）
 
 #### 访问者模式（Visitor Pattern）
 [visitor](src/behavioral/visitor)

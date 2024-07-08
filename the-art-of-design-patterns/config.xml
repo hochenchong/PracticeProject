@@ -23,4 +23,6 @@
 
     <!-- 策略模式 -->
     <strategy>behavioral.strategy.support.ChildrenDiscount</strategy>
+    <!-- 模版方法模式 -->
+    <template>behavioral.template.support.CurrentAccount</template>
 </config>
