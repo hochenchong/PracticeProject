@@ -151,6 +151,47 @@
 * 请求发送者与接收者解耦
 * [客户端使用：CommandClient](src/behavioral/command/CommandClient.java)
 * 将请求者的操作，与传入的命令交流。由命令来与接收者打交道。而请求者不需要知道具体的接收者是谁
+* 例如 JDK 中，Runnable、Callable
+
+####  解释器模式（Interpreter Pattern）
+[interpreter](src/behavioral/interpreter)
+* 自定义语言的实现
+* 用的较少
+* 以机器人控制程序结构为例
+* [客户端使用：InterpreterClient](src/behavioral/interpreter/InterpreterClient.java)
+* [抽象表达式：AbstractNode](src/behavioral/interpreter/AbstractNode.java)
+
+#### 迭代器模式（Iterator Pattern）
+[iterator](src/behavioral/iterator)
+
+
+#### 中介者模式（Mediator Pattern）
+[mediator](src/behavioral/mediator)
+
+
+#### 备忘录模式（Memento Pattern）
+[memento](src/behavioral/memento)
+
+
+#### 观察者模式（Observer Pattern）
+[observer](src/behavioral/observer)
+
+
+#### 状态模式（State Pattern）
+[state](src/behavioral/state)
+
+
+#### 策略模式（Strategy Pattern）
+[strategy](src/behavioral/strategy)
+
+
+#### 模板方法模式（Template Method Pattern）
+[template](src/behavioral/template)
+
+
+#### 访问者模式（Visitor Pattern）
+[visitor](src/behavioral/visitor)
+
 
 ---
 
