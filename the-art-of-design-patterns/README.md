@@ -221,7 +221,10 @@
 
 #### 访问者模式（Visitor Pattern）
 [visitor](src/behavioral/visitor)
+* 以员工数据汇总为例
 * [客户端使用：VisitorClient](src/behavioral/visitor/VisitorClient.java)
+* 使用频率不高
+* 缺点，增加元素类，抽象访问者要新增抽象操作，每个具体访问者页需要修改
 
 ---
 
@@ -229,4 +232,4 @@
 
 开始时间：2024-07-04
 
-结束时间：
+结束时间：2024-07-08

@@ -52,4 +52,8 @@ public class XMLTagNameConstant {
      * 模板方法模式
      */
     public static final String TEMPLATE = "template";
+    /**
+     * 访问者模式
+     */
+    public static final String VISITOR = "visitor";
 }
