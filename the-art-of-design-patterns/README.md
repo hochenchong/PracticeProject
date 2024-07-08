@@ -172,6 +172,10 @@
 
 #### 中介者模式（Mediator Pattern）
 [mediator](src/behavioral/mediator)
+* 协调多个对象之间的交互
+* 网状结构，提出一个中介者来交互，变成星状图
+* [客户端使用：MediatorClient](src/behavioral/mediator/MediatorClient.java)
+* 缺点：中介者大量交互逻辑
 
 
 #### 备忘录模式（Memento Pattern）
