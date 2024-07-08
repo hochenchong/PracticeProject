@@ -20,4 +20,7 @@
     <!-- 命令模式 -->
     <command1>behavioral.command.HelpCommand</command1>
     <command2>behavioral.command.MinimizeCommand</command2>
+
+    <!-- 策略模式 -->
+    <strategy>behavioral.strategy.support.ChildrenDiscount</strategy>
 </config>

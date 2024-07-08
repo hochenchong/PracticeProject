@@ -43,4 +43,9 @@ public class XMLTagNameConstant {
      */
     public static final String COMMAND1 = "command1";
     public static final String COMMAND2 = "command2";
+
+    /**
+     * 策略模式
+     */
+    public static final String STRATEGY = "strategy";
 }

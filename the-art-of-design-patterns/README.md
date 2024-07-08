@@ -204,7 +204,12 @@
 
 #### 策略模式（Strategy Pattern）
 [strategy](src/behavioral/strategy)
+* 算法的封装与切换
+* 目的：将算法的定义和使用分开
+* 以电影票打折为例
 * [客户端使用：StrategyClient](src/behavioral/strategy/StrategyClient.java)
+* 使用频率较高的设计模式
+* 缺点：需要客户端知道并理解所有的算法或行为，才能自行决定使用哪个策略
 
 #### 模板方法模式（Template Method Pattern）
 [template](src/behavioral/template)
