@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<config>
+    <!-- 简单工厂模式 -->
+    <chartType>pie</chartType>
+    <!-- 工厂方法模式 -->
+    <loggerFactory>creational.factory.factoryMethod.DatabaseLoggerFactory</loggerFactory>
+    <!-- 抽象工厂模式 -->
+    <skinFactory>creational.abstractFactory.SpringSkinFactory</skinFactory>
+    <!-- 建造者模式 -->
+    <actorBuilder>creational.builder.HeroBuilder</actorBuilder>
+
+    <!-- 适配器模式 -->
+    <operationAdapter>structural.adapter.OperationAdapter</operationAdapter>
+    <!-- 桥接模式 -->
+    <imgBridge>structural.bridge.image.JPGImage</imgBridge>
+    <systemBridge>structural.bridge.system.LinuxImp</systemBridge>
+    <!-- 代理模式 -->
+    <proxy>structural.proxy.SearcherProxy</proxy>
+
+    <!-- 命令模式 -->
+    <command1>behavioral.command.HelpCommand</command1>
+    <command2>behavioral.command.MinimizeCommand</command2>
+
+    <!-- 策略模式 -->
+    <strategy>behavioral.strategy.support.ChildrenDiscount</strategy>
+    <!-- 模版方法模式 -->
+    <template>behavioral.template.support.CurrentAccount</template>
+    <!-- 访问者模式 -->
+    <visitor>behavioral.visitor.FADepartment</visitor>
+</config>
