@@ -1,6 +1,7 @@
 package hochenchong.util;
 
 import java.io.*;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,13 +30,13 @@ public class FileUtil {
      * @return
      */
     public static String getFileContent(String filePath, String charsetName) {
-        StringBuffer stringBuffer = new StringBuffer();
+        StringBuilder stringBuffer = new StringBuilder();
 
-        try (InputStreamReader reader = new InputStreamReader(new FileInputStream(new File(filePath)), charsetName)) {
+        try (InputStreamReader reader = new InputStreamReader(Files.newInputStream(new File(filePath).toPath()), charsetName)) {
             BufferedReader br = new BufferedReader(reader);
             String str;
             while ((str = br.readLine()) != null) {
-                stringBuffer.append(str + "\n");
+                stringBuffer.append(str).append("\n");
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -67,7 +68,7 @@ public class FileUtil {
             file.getParentFile().mkdirs();
         }
 
-        try (OutputStreamWriter outputStreamWriter = new OutputStreamWriter(new FileOutputStream(file), charsetName)) {
+        try (OutputStreamWriter outputStreamWriter = new OutputStreamWriter(Files.newOutputStream(file.toPath()), charsetName)) {
             outputStreamWriter.write(content);
             outputStreamWriter.flush();
         } catch (IOException e) {
