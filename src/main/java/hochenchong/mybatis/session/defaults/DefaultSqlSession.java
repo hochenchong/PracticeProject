@@ -18,4 +18,9 @@ public class DefaultSqlSession implements SqlSession {
         this.executor = executor;
         this.autoCommit = autoCommit;
     }
+
+    @Override
+    public <T> T getMapper(Class<T> type) {
+        return configuration.getMapper(type, this);
+    }
 }

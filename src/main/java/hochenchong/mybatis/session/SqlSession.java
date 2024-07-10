@@ -5,4 +5,5 @@ package hochenchong.mybatis.session;
  * @date 2024/07/10
  */
 public interface SqlSession {
+    <T> T getMapper(Class<T> type);
 }
