@@ -5,4 +5,7 @@ package hochenchong.mybatis.session;
  * @date 2024/07/10
  */
 public interface SqlSessionFactory {
+    SqlSession openSession();
+
+    Configuration getConfiguration();
 }
