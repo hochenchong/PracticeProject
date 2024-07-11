@@ -27,6 +27,5 @@ public class UseMyBatis {
         UserMapper mapper = sqlSession.getMapper(UserMapper.class);
         User user = mapper.getUserById("1");
         System.out.println(user);
-
     }
 }
