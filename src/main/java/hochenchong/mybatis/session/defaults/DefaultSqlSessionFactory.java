@@ -1,5 +1,6 @@
 package hochenchong.mybatis.session.defaults;
 
+import hochenchong.mybatis.executor.BaseExecutor;
 import hochenchong.mybatis.session.Configuration;
 import hochenchong.mybatis.session.SqlSession;
 import hochenchong.mybatis.session.SqlSessionFactory;
@@ -19,7 +20,7 @@ public class DefaultSqlSessionFactory implements SqlSessionFactory {
 
     @Override
     public SqlSession openSession() {
-        return new DefaultSqlSession(configuration, null, false);
+        return new DefaultSqlSession(configuration, new BaseExecutor(configuration), false);
     }
 
     @Override

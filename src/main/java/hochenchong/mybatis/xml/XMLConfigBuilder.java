@@ -118,7 +118,6 @@ public class XMLConfigBuilder {
                 // mapper 处理
                 // 这里也简化，只处理 resource
                 String resource = child.attributeValue("resource");
-                System.out.println("Mapper Resource: " + resource);
                 if (resource != null) {
                     // 读取 mapper 里配置的 xml 文件
                     try (InputStream inputStream = Resources.getResourceAsStream(resource)) {

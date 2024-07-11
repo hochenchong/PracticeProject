@@ -2,6 +2,10 @@ package hochenchong.mybatis.session;
 
 import hochenchong.mybatis.binding.MapperRegistry;
 import hochenchong.mybatis.mapping.Environment;
+import hochenchong.mybatis.mapping.MappedStatement;
+
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 
 /**
@@ -11,6 +15,8 @@ import hochenchong.mybatis.mapping.Environment;
 
 public class Configuration {
     protected final MapperRegistry mapperRegistry = new MapperRegistry(this);
+    // 用于存放映射内容
+    private Map<String, MappedStatement> mappedStatements = new ConcurrentHashMap<>();
 
     protected Environment environment;
 
@@ -32,5 +38,17 @@ public class Configuration {
 
     public void setEnvironment(Environment environment) {
         this.environment = environment;
+    }
+
+    public boolean hasStatement(String statementName) {
+        return mappedStatements.containsKey(statementName);
+    }
+
+    public MappedStatement getMappedStatement(String id) {
+        return mappedStatements.get(id);
+    }
+
+    public void addMappedStatement(MappedStatement ms) {
+        mappedStatements.put(ms.getId(), ms);
     }
 }

@@ -1,6 +1,8 @@
 package hochenchong.mybatis.xml;
 
 import hochenchong.mybatis.io.Resources;
+import hochenchong.mybatis.mapping.MappedStatement;
+import hochenchong.mybatis.mapping.SqlCommandType;
 import hochenchong.mybatis.session.Configuration;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
@@ -34,13 +36,20 @@ public class XMLMapperBuilder {
             // 获取命名空间，添加到配置中
             bindMapperForNamespace(root);
             for (Element child : root.elements()) {
-                // 遍历里面的方法
-                System.out.println(child.getName());
-                System.out.println(child.getText().trim());
-                System.out.println(child.attributeValue("id"));
-                System.out.println(child.attributeValue("resultType"));
+                // 解析后存放到 configuration 里到
+                MappedStatement ms = new MappedStatement();
+                // TODO 类名+方法名
+                ms.setId(child.attributeValue("id"));
+                if ("select".equalsIgnoreCase(child.getName())) {
+                    ms.setSqlCommandType(SqlCommandType.SELECT);
+                }
+                ms.setSql(child.getText().trim());
+                // 获取返回类型，获取 class
+                Class<?> resultType = ClassLoader.getSystemClassLoader().loadClass(child.attributeValue("resultType"));
+                ms.setResultType(resultType);
+                configuration.addMappedStatement(ms);
             }
-        } catch (DocumentException e) {
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
