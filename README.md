@@ -5,9 +5,24 @@
 
 ---
 
+### mini-mybatis
+* 开始时间：2024-07-10
+* 结束时间：2024-07-11
+* [项目：mini-mybatis](./mini-mybatis)
+* 以 MyBatis 3.5.16 版本为例，进行了简化，将大体流程跑通的一个 mini 版本 mybatis
+
+---
+
+### JUnit5 demo
+* 2024-07-09
+* [JUnit5Demo](./java/src/test/java/junit5/JUnit5Demo.java)
+* [AssertionsTest](./java/src/test/java/junit5/AssertionsTest.java)
+* junit5 的常见用法笔记
+
+---
+
 ### 《设计模式的艺术》刘伟
-* 开始时间：2024-07-04
-* 结束时间：2024-07-08
+
 * [项目：the-art-of-design-patterns](./the-art-of-design-patterns)
 * 重温一下设计模式，顺带把书中的例子敲一下，熟悉一下。下次要看时就能看代码了
 
