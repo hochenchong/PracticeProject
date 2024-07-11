@@ -1,6 +1,7 @@
 package hochenchong.mybatis.session;
 
 import hochenchong.mybatis.session.defaults.DefaultSqlSessionFactory;
+import hochenchong.mybatis.xml.XMLConfigBuilder;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -21,10 +22,8 @@ public class SqlSessionFactoryBuilder {
 
     public SqlSessionFactory build(InputStream inputStream, String environment, Properties properties) {
         try {
-            // 这里使用 dom4j 解析，将 xml 转换为 configuration 对象
-//            XMLConfigBuilder parser = new XMLConfigBuilder(inputStream, environment, properties);
-//            return build(parser.parse());
-            return null;
+            XMLConfigBuilder parser = new XMLConfigBuilder(inputStream, environment, properties);
+            return build(parser.parse());
         } catch (Exception e) {
             // throw ExceptionFactory.wrapException("Error building SqlSession.", e);
             throw e;

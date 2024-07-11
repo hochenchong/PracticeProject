@@ -1,7 +1,8 @@
 package hochenchong.mybatis.session;
 
 import hochenchong.mybatis.binding.MapperRegistry;
-import hochenchong.mybatis.session.defaults.DefaultSqlSession;
+import hochenchong.mybatis.mapping.Environment;
+
 
 /**
  * @author hochenchong
@@ -11,7 +12,17 @@ import hochenchong.mybatis.session.defaults.DefaultSqlSession;
 public class Configuration {
     protected final MapperRegistry mapperRegistry = new MapperRegistry(this);
 
+    protected Environment environment;
+
     public <T> T getMapper(Class<T> type, SqlSession sqlSession) {
         return mapperRegistry.getMapper(type, sqlSession);
+    }
+
+    public Environment getEnvironment() {
+        return environment;
+    }
+
+    public void setEnvironment(Environment environment) {
+        this.environment = environment;
     }
 }
