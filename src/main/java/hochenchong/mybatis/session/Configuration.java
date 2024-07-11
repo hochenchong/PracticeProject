@@ -18,6 +18,14 @@ public class Configuration {
         return mapperRegistry.getMapper(type, sqlSession);
     }
 
+    public <T> void addMapper(Class<T> type) {
+        mapperRegistry.addMapper(type);
+    }
+
+    public boolean hasMapper(Class<?> type) {
+        return mapperRegistry.hasMapper(type);
+    }
+
     public Environment getEnvironment() {
         return environment;
     }

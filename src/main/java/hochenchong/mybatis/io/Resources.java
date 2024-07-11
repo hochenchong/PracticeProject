@@ -29,4 +29,8 @@ public class Resources {
         }
         return in;
     }
+
+    public static Class<?> classForName(String namespace) throws ClassNotFoundException {
+        return Class.forName(namespace, true, defaultClassLoader);
+    }
 }

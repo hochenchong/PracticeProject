@@ -1,6 +1,7 @@
 package hochenchong.mybatis.xml;
 
 import hochenchong.mybatis.datasource.UnpooledDataSource;
+import hochenchong.mybatis.io.Resources;
 import hochenchong.mybatis.mapping.Environment;
 import hochenchong.mybatis.session.Configuration;
 import org.dom4j.Document;
@@ -13,7 +14,7 @@ import java.io.InputStream;
 import java.util.Properties;
 
 /**
- * xml 解析工具，解析 xml 返回 Configuration
+ * xml 解析工具，用于解析 config xml，解析 xml 返回 Configuration
  *
  * @author hochenchong
  * @date 2024/07/10
@@ -66,51 +67,67 @@ public class XMLConfigBuilder {
     }
 
     private void environmentsElement(Element environments) {
+        if (environments == null) {
+            return;
+        }
         String driver = null, url = null, username = null, password = null;
+        // 获取 <dataSource> 元素及其属性和子元素
+        Element dataSourceEle = environments.element("environment").element("dataSource");
+        String id = environments.element("environment").attributeValue("id");
+        if (dataSourceEle != null) {
+            // 获取 <property> 元素及其属性和值
+            for (Element property : dataSourceEle.elements("property")) {
+                String name = property.attributeValue("name");
+                String value = property.attributeValue("value");
 
-        // 获取 <environments> 元素
-        if (environments != null) {
-            // 获取 <dataSource> 元素及其属性和子元素
-            Element dataSourceEle = environments.element("environment").element("dataSource");
-            String id = environments.element("environment").attributeValue("id");
-            if (dataSourceEle != null) {
-                // 获取 <property> 元素及其属性和值
-                for (Element property : dataSourceEle.elements("property")) {
-                    String name = property.attributeValue("name");
-                    String value = property.attributeValue("value");
-
-                    //赋值
-                    switch (name) {
-                        case "driver" :
-                            driver = value;
-                            break;
-                        case "url" :
-                            url = value;
-                            break;
-                        case "username" :
-                            username = value;
-                            break;
-                        case "password" :
-                            password = value;
-                            break;
-                        default :
-                            throw new RuntimeException("[database]: <property> unknown name");
-                    }
+                //赋值
+                switch (name) {
+                    case "driver" :
+                        driver = value;
+                        break;
+                    case "url" :
+                        url = value;
+                        break;
+                    case "username" :
+                        username = value;
+                        break;
+                    case "password" :
+                        password = value;
+                        break;
+                    default :
+                        throw new RuntimeException("[database]: <property> unknown name");
                 }
-                // 这里简化了判断是否为空，也简化了从工厂中获取，直接 new 出来
-                DataSource dataSource = new UnpooledDataSource(driver, url, username, password);
-                this.configuration.setEnvironment(new Environment(id, dataSource));
             }
+            // 这里简化了判断是否为空，也简化了从工厂中获取，直接 new 出来
+            DataSource dataSource = new UnpooledDataSource(driver, url, username, password);
+            this.configuration.setEnvironment(new Environment(id, dataSource));
         }
     }
 
-    private void mappersElement(Element mappers) {
-        // 获取 <mappers> 元素及其子元素
-        if (mappers != null) {
-            Element mapper = mappers.element("mapper");
-            if (mapper != null) {
-                String resource = mapper.attributeValue("resource");
+    private void mappersElement(Element context) throws Exception {
+        if (context == null) {
+            return;
+        }
+        for (Element child : context.elements()) {
+            // 这里默认只处理 mapper 开头的的情况
+            if ("package".equals(child.getName())) {
+//                String mapperPackage = child.getStringAttribute("name");
+//                configuration.addMappers(mapperPackage);
+                continue;
+            } else {
+                // mapper 处理
+                // 这里也简化，只处理 resource
+                String resource = child.attributeValue("resource");
                 System.out.println("Mapper Resource: " + resource);
+                if (resource != null) {
+                    // 读取 mapper 里配置的 xml 文件
+                    try (InputStream inputStream = Resources.getResourceAsStream(resource)) {
+                        XMLMapperBuilder mapperParser = new XMLMapperBuilder(inputStream, configuration, resource);
+                        mapperParser.parse();
+                    }
+                } else {
+                    throw new RuntimeException("A mapper element may only specify a url, resource or class, but not more than one.");
+                }
             }
         }
     }

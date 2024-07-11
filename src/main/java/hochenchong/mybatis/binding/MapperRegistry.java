@@ -30,4 +30,32 @@ public class MapperRegistry {
             throw new BindingException("Error getting mapper instance. Cause: " + e, e);
         }
     }
+
+    public <T> void addMapper(Class<T> type) {
+        // type 需要是接口类型
+        if (type.isInterface()) {
+            if (hasMapper(type)) {
+                throw new BindingException("Type " + type + " is already known to the MapperRegistry.");
+            }
+            boolean loadCompleted = false;
+            try {
+                knownMappers.put(type, new MapperProxyFactory<>(type));
+                // It's important that the type is added before the parser is run
+                // otherwise the binding may automatically be attempted by the
+                // mapper parser. If the type is already known, it won't try.
+                // 先不考虑注解的问题
+//                MapperAnnotationBuilder parser = new MapperAnnotationBuilder(config, type);
+//                parser.parse();
+                loadCompleted = true;
+            } finally {
+                if (!loadCompleted) {
+                    knownMappers.remove(type);
+                }
+            }
+        }
+    }
+
+    public <T> boolean hasMapper(Class<T> type) {
+        return knownMappers.containsKey(type);
+    }
 }

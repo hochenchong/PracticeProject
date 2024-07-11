@@ -1,8 +1,11 @@
 package hochenchong.test;
 
 import hochenchong.mybatis.io.Resources;
+import hochenchong.mybatis.session.SqlSession;
 import hochenchong.mybatis.session.SqlSessionFactory;
 import hochenchong.mybatis.session.SqlSessionFactoryBuilder;
+import hochenchong.test.mapper.UserMapper;
+import hochenchong.test.model.User;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -20,5 +23,10 @@ public class UseMyBatis {
         String resource = "mybatis-config.xml";
         InputStream inputStream = Resources.getResourceAsStream(resource);
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+        User user = mapper.getUserById("1");
+        System.out.println(user);
+
     }
 }
