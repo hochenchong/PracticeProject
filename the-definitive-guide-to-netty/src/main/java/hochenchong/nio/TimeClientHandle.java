@@ -11,7 +11,7 @@ import java.util.Iterator;
 import java.util.Set;
 
 /**
- * 异步非阻塞 I/O 的 TimeClient 处理器
+ * 非阻塞 I/O 的 TimeClient 处理器
  *
  * @author hochenchong
  * @date 2024/07/17

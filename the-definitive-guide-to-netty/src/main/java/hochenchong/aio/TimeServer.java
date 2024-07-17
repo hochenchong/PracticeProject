@@ -1,7 +1,8 @@
-package hochenchong.nio;
+package hochenchong.aio;
+
 
 /**
- * 非阻塞 I/O 的 TimeServer
+ * AIO 的 TimeServer
  *
  * @author hochenchong
  * @date 2024/07/17
@@ -12,7 +13,7 @@ public class TimeServer {
         if (args != null && args.length > 0) {
             port = Integer.parseInt(args[0]);
         }
-        MultiplexerTimeServer timeServer = new MultiplexerTimeServer(port);
-        new Thread(timeServer, "NIO-MultiplexerTimeServer-001").start();
+        AsyncTimeServerHandler timeServer = new AsyncTimeServerHandler(port);
+        new Thread(timeServer, "AIO-AsyncTimeServerHandler-001").start();
     }
 }

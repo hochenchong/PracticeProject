@@ -14,8 +14,18 @@
 
 ### NIO 编程
 [nio](src/main/java/hochenchong/nio)
-* [异步非阻塞 I/O 的 TimeServer](src/main/java/hochenchong/nio/TimeServer.java)
+* [非阻塞 I/O 的 TimeServer](src/main/java/hochenchong/nio/TimeServer.java)
 * [TimeClient 客户端](src/main/java/hochenchong/nio/TimeClient.java)
+* 相比于 BIO 代码，NIO 代码会复杂不少。而且当前还未考虑 “半包读” 和 “半包写” 之类的。
+* 优点：使用多路复用，非阻塞，可以继续做其它事情
+* JDK 的 Selector 在 Linux 等主流操作系统上通过 epoll 实现，没有连接句柄数的限制，意味着一个 Selector 线程可以同时处理成千上万个客户端连接，而且性能不会随之线性下降
+
+### AIO 编程
+[aio](src/main/java/hochenchong/aio)
+* [AIO 的 TimeServer](src/main/java/hochenchong/aio/TimeServer.java)
+* [TimeClient 客户端](src/main/java/hochenchong/aio/TimeClient.java)
+* JDK 底层通过线程池 ThreadPoolExecutor 来执行回调通知
+
 
 ---
 
