@@ -11,6 +11,12 @@
 * 伪异步 I/O，通过线程池，限制了线程数量，避免线程耗尽。
 * 底层通信还是同步阻塞模型
 
+
+### NIO 编程
+[nio](src/main/java/hochenchong/nio)
+* [异步非阻塞 I/O 的 TimeServer](src/main/java/hochenchong/nio/TimeServer.java)
+* [TimeClient 客户端](src/main/java/hochenchong/nio/TimeClient.java)
+
 ---
 
 ### 后记
