@@ -1,8 +1,10 @@
 package hochenchong.chapter8;
 
 
-import hochenchong.chapter8.packet.LoginRequestPacket;
-import hochenchong.chapter8.packet.Packet;
+import hochenchong.protocol.command.Command;
+import hochenchong.protocol.PacketCodeC;
+import hochenchong.protocol.req.LoginRequestPacket;
+import hochenchong.protocol.Packet;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufAllocator;
 import org.junit.jupiter.api.Assertions;
@@ -27,6 +29,6 @@ class PacketCodeCTest {
 
         Packet decode = packetCodeC.decode(byteBuf);
         Assertions.assertNotNull(decode);
-        Assertions.assertEquals(Command.LOGIN_REQUEST, decode.getCommand());
+        Assertions.assertEquals(Command.LOGIN_REQ, decode.getCommand());
     }
 }
