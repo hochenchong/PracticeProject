@@ -6,4 +6,5 @@ package hochenchong.chapter8;
  */
 public interface Command {
     byte LOGIN_REQUEST = 1;
+    byte LOGIN_RESPONSE = 2;
 }

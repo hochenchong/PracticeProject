@@ -4,6 +4,7 @@ package hochenchong.chapter8;
 import hochenchong.chapter8.packet.LoginRequestPacket;
 import hochenchong.chapter8.packet.Packet;
 import io.netty.buffer.ByteBuf;
+import io.netty.buffer.ByteBufAllocator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -21,7 +22,7 @@ class PacketCodeCTest {
         packet.setPassword("password");
 
         PacketCodeC packetCodeC = new PacketCodeC();
-        ByteBuf byteBuf = packetCodeC.encode(packet);
+        ByteBuf byteBuf = PacketCodeC.INSTANCE.encode(ByteBufAllocator.DEFAULT, packet);
         Assertions.assertNotNull(byteBuf);
 
         Packet decode = packetCodeC.decode(byteBuf);

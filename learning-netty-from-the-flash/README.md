@@ -36,6 +36,12 @@
   * 数据：N 字节
 * 自定义编解码类：[PacketCodeC](src/main/java/hochenchong/chapter8/PacketCodeC.java)
 
+### 第 9 章节 实现客户端登录
+* [chapter9](src/main/java/hochenchong/chapter9)
+* 复用 [chapter8](src/main/java/hochenchong/chapter8) 定义的编解码
+* 客户端连接到服务器时，发送登录信息
+* 服务器获取到登录信息时，校验数据，并返回结果
+* 客户端输出服务器的结果
 
 ---
 

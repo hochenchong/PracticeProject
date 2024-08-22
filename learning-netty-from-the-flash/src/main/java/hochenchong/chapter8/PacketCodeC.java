@@ -5,6 +5,7 @@ import hochenchong.chapter8.packet.Packet;
 import hochenchong.chapter8.serialize.JSONSerializer;
 import hochenchong.chapter8.serialize.Serializer;
 import hochenchong.chapter8.serialize.SerializerAlgorithm;
+import hochenchong.chapter9.resp.LoginResponsePacket;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufAllocator;
 
@@ -23,15 +24,19 @@ import io.netty.buffer.ByteBufAllocator;
  */
 public class PacketCodeC {
     public static final int MAGIC_NUMBER = 0x12345678;
+    public static final PacketCodeC INSTANCE = new PacketCodeC();
+
+
 
     /**
      * 编码
      *
+     * @param byteBufAllocator byteBufAllocator
      * @param packet 数据
      * @return ByteBuf 对象
      */
-    public ByteBuf encode(Packet packet) {
-        ByteBuf byteBuf = ByteBufAllocator.DEFAULT.buffer();
+    public ByteBuf encode(ByteBufAllocator byteBufAllocator, Packet packet) {
+        ByteBuf byteBuf = byteBufAllocator.buffer();
         // 序列化对象
         byte[] bytes = Serializer.DEFAULT.serialize(packet);
 
@@ -82,6 +87,9 @@ public class PacketCodeC {
     private Class<? extends Packet> getRequestType(byte command) {
         if (Command.LOGIN_REQUEST == command) {
             return LoginRequestPacket.class;
+        }
+        if (Command.LOGIN_RESPONSE == command) {
+            return LoginResponsePacket.class;
         }
         return null;
     }
