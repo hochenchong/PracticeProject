@@ -3,7 +3,7 @@ package hochenchong.chapter8;
 
 import hochenchong.protocol.command.Command;
 import hochenchong.protocol.PacketCodeC;
-import hochenchong.protocol.req.LoginRequestPacket;
+import hochenchong.protocol.req.LoginReqPacket;
 import hochenchong.protocol.Packet;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufAllocator;
@@ -18,7 +18,7 @@ class PacketCodeCTest {
 
     @Test
     void encodeAndDecode() {
-        LoginRequestPacket packet = new LoginRequestPacket();
+        LoginReqPacket packet = new LoginReqPacket();
         packet.setUserId(1);
         packet.setUsername("zhangsan");
         packet.setPassword("password");

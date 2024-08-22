@@ -22,5 +22,5 @@ public interface Command {
     /**
      * 消息响应
      */
-    byte MSG_RESP = 3;
+    byte MSG_RESP = 4;
 }

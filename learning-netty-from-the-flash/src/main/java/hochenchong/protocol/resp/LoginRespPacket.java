@@ -1,4 +1,4 @@
-package hochenchong.protocol.req;
+package hochenchong.protocol.resp;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import hochenchong.protocol.command.Command;
@@ -7,24 +7,28 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
- * 登录请求
- *
  * @author hochenchong
  * @date 2024/08/22
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class LoginRequestPacket extends Packet {
-
-    private Integer userId;
-
-    private String username;
-
-    private String password;
+public class LoginRespPacket extends Packet {
+    /**
+     * 版本号
+     */
+    private byte version;
+    /**
+     * 是否登录成功
+     */
+    private boolean success;
+    /**
+     * 原因
+     */
+    private String reason;
 
     @JsonIgnore
     @Override
     public byte getCommand() {
-        return Command.LOGIN_REQ;
+        return Command.LOGIN_RESP;
     }
 }

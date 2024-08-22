@@ -1,11 +1,13 @@
 package hochenchong.protocol;
 
 import hochenchong.protocol.command.Command;
-import hochenchong.protocol.req.LoginRequestPacket;
+import hochenchong.protocol.req.LoginReqPacket;
+import hochenchong.protocol.req.MsgReqPacket;
+import hochenchong.protocol.resp.MsgRespPacket;
 import hochenchong.serialize.JSONSerializer;
 import hochenchong.serialize.Serializer;
 import hochenchong.serialize.SerializerAlgorithm;
-import hochenchong.protocol.resp.LoginResponsePacket;
+import hochenchong.protocol.resp.LoginRespPacket;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufAllocator;
 
@@ -85,12 +87,17 @@ public class PacketCodeC {
     }
 
     private Class<? extends Packet> getRequestType(byte command) {
-        if (Command.LOGIN_REQ == command) {
-            return LoginRequestPacket.class;
+        switch (command) {
+            case Command.LOGIN_REQ :
+                return LoginReqPacket.class;
+            case Command.LOGIN_RESP :
+                return LoginRespPacket.class;
+            case Command.MSG_REQ :
+                return MsgReqPacket.class;
+            case Command.MSG_RESP :
+                return MsgRespPacket.class;
+            default:
+                return null;
         }
-        if (Command.LOGIN_RESP == command) {
-            return LoginResponsePacket.class;
-        }
-        return null;
     }
 }

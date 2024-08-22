@@ -1,9 +1,11 @@
-package hochenchong.chapter.chapter9;
+package hochenchong.chapter.chapter10;
 
+import hochenchong.protocol.Packet;
 import hochenchong.protocol.PacketCodeC;
 import hochenchong.protocol.req.LoginReqPacket;
-import hochenchong.protocol.Packet;
 import hochenchong.protocol.resp.LoginRespPacket;
+import hochenchong.protocol.resp.MsgRespPacket;
+import hochenchong.utils.LoginUtils;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
@@ -42,11 +44,14 @@ public class ClientHandler extends ChannelInboundHandlerAdapter {
         if (packet instanceof LoginRespPacket loginRespPacket) {
             if (loginRespPacket.isSuccess()) {
                 // 校验成功
+                LoginUtils.markAsLogin(ctx.channel());
                 System.out.println(LocalDateTime.now() + " 客户端登录成功！");
             } else {
                 // 校验失败
                 System.out.println(LocalDateTime.now() + " 客户端登录失败！原因：" + loginRespPacket.getReason());
             }
+        } else if (packet instanceof MsgRespPacket msgRespPacket) {
+            System.out.println(LocalDateTime.now() + "：收到服务器消息：" + msgRespPacket.getMessage());
         }
     }
 }

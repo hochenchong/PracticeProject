@@ -46,7 +46,7 @@
 
 ### 第 10 章　实现客户端与服务端收发消息
 * [chapter10](src/main/java/hochenchong/chapter/chapter10)
-* 
+* 客户端从命令行输入内容，服务器响应消息
 
 ---
 

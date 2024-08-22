@@ -1,9 +1,11 @@
-package hochenchong.chapter.chapter9;
+package hochenchong.chapter.chapter10;
 
+import hochenchong.protocol.Packet;
 import hochenchong.protocol.PacketCodeC;
 import hochenchong.protocol.req.LoginReqPacket;
-import hochenchong.protocol.Packet;
+import hochenchong.protocol.req.MsgReqPacket;
 import hochenchong.protocol.resp.LoginRespPacket;
+import hochenchong.protocol.resp.MsgRespPacket;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
@@ -23,6 +25,7 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
         // 解码
         Packet packet = PacketCodeC.INSTANCE.decode(byteBuf);
         if (packet instanceof LoginReqPacket loginReqPacket) {
+            // 登录请求
             LoginRespPacket responsePacket = new LoginRespPacket();
             loginReqPacket.setVersion(loginReqPacket.getVersion());
             if (valid(loginReqPacket)) {
@@ -36,6 +39,15 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
             }
             // 编码回包
             ByteBuf buf = PacketCodeC.INSTANCE.encode(ctx.alloc(), responsePacket);
+            ctx.channel().writeAndFlush(buf);
+        } else if (packet instanceof MsgReqPacket msgReqPacket) {
+            // 消息请求
+            System.out.println(LocalDateTime.now() + "：收到客户端消息：" + msgReqPacket.getMessage());
+
+            // 回复消息
+            MsgRespPacket msgRespPacket = new MsgRespPacket();
+            msgRespPacket.setMessage("服务端回复 【" + msgReqPacket.getMessage() + "】");
+            ByteBuf buf = PacketCodeC.INSTANCE.encode(ctx.alloc(), msgRespPacket);
             ctx.channel().writeAndFlush(buf);
         }
     }
