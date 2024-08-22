@@ -62,6 +62,12 @@
     * outboundHandler 的事件通常只会传播到下一个 outboundHandler
     * 执行顺序与添加的顺序相反
 
+### 第 12 章　构建客户端与服务端的 Pipeline
+* [chapter12](src/main/java/hochenchong/chapter/chapter12)
+* 使用内置的 Handler 简化开发，专注于逻辑
+* ByteToMessageDecoder 与 MessageToByteEncoder，自定义编解码，不用自己去分配 ByteBuf，便于 Netty 管理内存的分配与释放
+* SimpleChannelInboundHandler 简化开发，实现类型判断与对象传递，减少大量的 if else 类型判断与类型转换
+
 ---
 
 ### 后记
