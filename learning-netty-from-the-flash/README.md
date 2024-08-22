@@ -25,6 +25,18 @@
 * 扩容机制：capacity 用完后，如果还未达到 maxCapacity（最大可以占多少字节），则进行扩容，容量是 2 的幂次方
 * read 和 write 方法会改变读写指针，get 和 set 不会改变读写指针
 
+### 第 8 章节 客户端与服务端通信协议编解码
+* [chapter8](src/main/java/hochenchong/chapter8)
+* 通信协议设计
+  * 魔数：4 字节
+  * 版本号：1 字节
+  * 序列化算法：1 字节
+  * 指令：1 字节
+  * 数据长度： 4 字节
+  * 数据：N 字节
+* 自定义编解码类：[PacketCodeC](src/main/java/hochenchong/chapter8/PacketCodeC.java)
+
+
 ---
 
 ### 后记
