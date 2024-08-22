@@ -48,6 +48,20 @@
 * [chapter10](src/main/java/hochenchong/chapter/chapter10)
 * 客户端从命令行输入内容，服务器响应消息
 
+### 第 11 章　Pipeline 与 ChannelHandler
+* 处理流程：数据流入 - 解码 - 业务处理，回包 - 编码 - 数据流出
+* Netty 通过责任链设计模式来组织代码逻辑，支持逻辑的动态添加和删除
+* Pipeline
+  * 一个 channel 对应一个 Pipeline
+  * 双向链表结构，每个节点是一个 ChannelHandler 对象
+* ChannelHandler 两个子接口
+  * ChannelInboundHandler
+    * inboundHandler 的事件通常只会传播到下一个 inboundHandler
+    * 执行顺序与添加的顺序保持一致
+  * ChannelOutboundHandler
+    * outboundHandler 的事件通常只会传播到下一个 outboundHandler
+    * 执行顺序与添加的顺序相反
+
 ---
 
 ### 后记
