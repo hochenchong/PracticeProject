@@ -1,5 +1,8 @@
 ## 《跟闪电侠学Netty：Netty 即时聊天实战与底层原理》
 
+### 前言
+作者提供的代码库：[https://github.com/lightningMan/flash-netty](https://github.com/lightningMan/flash-netty)
+
 ---
 
 ### BIO，NIO，Netty 简单例子
@@ -13,6 +16,14 @@
 * 客户端[FirstClientHandler](src/main/java/hochenchong/chapter6/FirstClientHandler.java)和服务端[FirstServerHandler](src/main/java/hochenchong/chapter6/FirstServerHandler.java)的 Handler 都继承 ChannelInboundHandlerAdapter，重写部分代码
 * 传输数据，通过没使用其它编解码器，使用默认的 ByteBuf 传输数据
 
+### 第 7 章 数据载体 ByteBuf 的介绍
+* [chapter7](src/main/java/hochenchong/chapter7)
+* ByteBuf 是一个字节容器，由读指针（readerIndex）和写指针（writerIndex）划分为三个区域
+  * 废弃字节：readerIndex 之前的
+  * 可读字节：readerIndex 到 writerIndex
+  * 可写字节：writerIndex 之后
+* 扩容机制：capacity 用完后，如果还未达到 maxCapacity（最大可以占多少字节），则进行扩容，容量是 2 的幂次方
+* read 和 write 方法会改变读写指针，get 和 set 不会改变读写指针
 
 ---
 
