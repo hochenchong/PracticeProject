@@ -16,10 +16,13 @@ public class FirstClientHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         System.out.println(LocalDateTime.now() + "：客户端写出数据！");
-        // 获取数据
-        ByteBuf buf = getByteBuf(ctx);
-        // 写数据
-        ctx.channel().writeAndFlush(buf);
+        // 循环，出现粘包、半包现象
+        for (int i = 0; i < 1000; i++) {
+            // 获取数据
+            ByteBuf buf = getByteBuf(ctx);
+            // 写数据
+            ctx.channel().writeAndFlush(buf);
+        }
     }
 
     @Override

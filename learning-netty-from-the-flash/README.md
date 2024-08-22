@@ -68,6 +68,20 @@
 * ByteToMessageDecoder 与 MessageToByteEncoder，自定义编解码，不用自己去分配 ByteBuf，便于 Netty 管理内存的分配与释放
 * SimpleChannelInboundHandler 简化开发，实现类型判断与对象传递，减少大量的 if else 类型判断与类型转换
 
+### 第 13 章　拆包/粘包理论与解决方案
+* [chapter13](src/main/java/hochenchong/chapter/chapter13)
+* 在大多数情况下，Netty 底层是通过 TCP 协议来进行数据传输的。可能会出现粘包或者半包现象
+  * 将 [chapter6](src/main/java/hochenchong/chapter/chapter6) 里的 FirstClientHandler 发送消息改为 for 循环 1000 次出现了现象
+* Netty 自带了几种类型的解码器
+  * 固定长度的拆包器 FixedLengthFrameDecoder
+  * 行拆包器 LineBasedFrameDecoder
+  * 分隔符拆包器 DelimiterBasedFrameDecoder
+  * 基于长度域的拆包器 LengthFieldBasedFrameDecoder（最通用）
+* 自定义解码器：[CustomLengthFieldBasedFrameDecoder](src/main/java/hochenchong/chapter/chapter13/CustomLengthFieldBasedFrameDecoder.java)
+  * 继承 LengthFieldBasedFrameDecoder，重写 decode 方法
+  * 拒接非本协议的消息
+  * 使用命令行连接：```telnet 127.0.0.1 8000``，然后随便发个消息 ```send x```，连接就被关闭了
+
 ---
 
 ### 后记
