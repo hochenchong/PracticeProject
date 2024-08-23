@@ -80,7 +80,17 @@
 * 自定义解码器：[CustomLengthFieldBasedFrameDecoder](src/main/java/hochenchong/chapter/chapter13/CustomLengthFieldBasedFrameDecoder.java)
   * 继承 LengthFieldBasedFrameDecoder，重写 decode 方法
   * 拒接非本协议的消息
-  * 使用命令行连接：```telnet 127.0.0.1 8000``，然后随便发个消息 ```send x```，连接就被关闭了
+  * 使用命令行连接：`telnet 127.0.0.1 8000`，然后随便发个消息 `send x`，连接就被关闭了
+
+### 第 14 章　ChannelHandler 的生命周期
+* [chapter14](src/main/java/hochenchong/chapter/chapter14)
+* ChannelHandler 的生命周期
+  * 连接时：handlerAdded -> channelRegistered -> channelActive -> channelRead -> channelReadComplete
+  * 关闭连接：channelInactive -> channelUnregistered -> handlerRemoved
+* ChannelInitializer 本质上也是 ChannelInboundHandlerAdapter
+  * 在被调用 handlerAdded 和 channelRegistered 都尝试调用了重写的 `initChannel` 方法来添加设置的处理器
+  * initChannel 方法使用 putIfAbsent() 方法来防止被调用多次
+
 
 ---
 
