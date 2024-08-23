@@ -91,6 +91,12 @@
   * 在被调用 handlerAdded 和 channelRegistered 都尝试调用了重写的 `initChannel` 方法来添加设置的处理器
   * initChannel 方法使用 putIfAbsent() 方法来防止被调用多次
 
+### 第 15 章　使用 ChannelHandler 的热插拔实现客户端身份校验
+* [chapter15](src/main/java/hochenchong/chapter/chapter15)
+* 通过 [AuthHandler](src/main/java/hochenchong/chapter/chapter15/AuthHandler.java) 对登录状态进行校验
+  * 校验成功后，则移除该校验模块，避免重复校验
+  * 校验失败，则直接关闭连接
+
 
 ---
 

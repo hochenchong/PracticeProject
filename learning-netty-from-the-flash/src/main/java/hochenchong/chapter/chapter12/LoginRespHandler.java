@@ -1,10 +1,8 @@
 package hochenchong.chapter.chapter12;
 
-import hochenchong.protocol.PacketCodeC;
 import hochenchong.protocol.req.LoginReqPacket;
 import hochenchong.protocol.resp.LoginRespPacket;
 import hochenchong.utils.LoginUtils;
-import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 
