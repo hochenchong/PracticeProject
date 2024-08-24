@@ -26,6 +26,12 @@ public class LoginRespPacket extends Packet {
      */
     private String reason;
 
+    /**
+     * chapter16 新增的用户 id
+     */
+    private String userId;
+    private String username;
+
     @JsonIgnore
     @Override
     public byte getCommand() {

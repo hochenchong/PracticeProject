@@ -15,6 +15,10 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 @Data
 public class MsgRespPacket extends Packet {
+    private String fromUserId;
+
+    private String fromUsername;
+
     private String message;
 
     @JsonIgnore
