@@ -3,6 +3,7 @@ package hochenchong.utils;
 import hochenchong.attribute.Attributes;
 import hochenchong.chapter.chapter16.Session;
 import io.netty.channel.Channel;
+import io.netty.channel.group.ChannelGroup;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -14,6 +15,8 @@ import java.util.concurrent.ConcurrentHashMap;
 public class SessionUtils {
     // userId -> channel 的映射
     private static final Map<String, Channel> userIdChannelMap = new ConcurrentHashMap<>();
+    // 群id 与 群组映射
+    private static final Map<String, ChannelGroup> groupIdChannelGroupMap = new ConcurrentHashMap<>();
 
     public static void bindSession(Session session, Channel channel) {
         userIdChannelMap.put(session.getUserId(), channel);
@@ -37,5 +40,25 @@ public class SessionUtils {
 
     public static Channel getChannel(String userId) {
         return userIdChannelMap.get(userId);
+    }
+
+    public static ChannelGroup getChannelGroup(String groupId) {
+        return groupIdChannelGroupMap.get(groupId);
+    }
+
+    public static void addChannelGroup(String groupId, ChannelGroup channelGroup) {
+        groupIdChannelGroupMap.put(groupId, channelGroup);
+    }
+
+    public static void quitChannelGroup(String groupId, Channel channel) {
+        ChannelGroup channelGroup = getChannelGroup(groupId);
+        if (channelGroup == null) {
+            return;
+        }
+        channelGroup.remove(channel);
+        if (channelGroup.isEmpty()) {
+            channelGroup.close();
+            groupIdChannelGroupMap.remove(groupId);
+        }
     }
 }

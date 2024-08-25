@@ -1,12 +1,8 @@
 package hochenchong.protocol;
 
 import hochenchong.protocol.command.Command;
-import hochenchong.protocol.req.CreateGroupReqPacket;
-import hochenchong.protocol.req.LoginReqPacket;
-import hochenchong.protocol.req.MsgReqPacket;
-import hochenchong.protocol.resp.CreateGroupRespPacket;
-import hochenchong.protocol.resp.LoginRespPacket;
-import hochenchong.protocol.resp.MsgRespPacket;
+import hochenchong.protocol.req.*;
+import hochenchong.protocol.resp.*;
 import hochenchong.serialize.JSONSerializer;
 import hochenchong.serialize.Serializer;
 import hochenchong.serialize.SerializerAlgorithm;
@@ -33,15 +29,21 @@ public class PacketCodeC {
     public static final int MAGIC_NUMBER = 0x12345678;
     public static final PacketCodeC INSTANCE = new PacketCodeC();
 
-    private static final Map<Byte, Class<? extends Packet>> requestTypeMap = new ConcurrentHashMap<>();
+    private static final Map<Byte, Class<? extends Packet>> packetTypeMap = new ConcurrentHashMap<>();
 
     static {
-        requestTypeMap.put(Command.LOGIN_REQ, LoginReqPacket.class);
-        requestTypeMap.put(Command.LOGIN_RESP, LoginRespPacket.class);
-        requestTypeMap.put(Command.MSG_REQ, MsgReqPacket.class);
-        requestTypeMap.put(Command.MSG_RESP, MsgRespPacket.class);
-        requestTypeMap.put(Command.CREATE_GROUP_REQ, CreateGroupReqPacket.class);
-        requestTypeMap.put(Command.CREATE_GROUP_RESP, CreateGroupRespPacket.class);
+        packetTypeMap.put(Command.LOGIN_REQ, LoginReqPacket.class);
+        packetTypeMap.put(Command.LOGIN_RESP, LoginRespPacket.class);
+        packetTypeMap.put(Command.MSG_REQ, MsgReqPacket.class);
+        packetTypeMap.put(Command.MSG_RESP, MsgRespPacket.class);
+        packetTypeMap.put(Command.CREATE_GROUP_REQ, CreateGroupReqPacket.class);
+        packetTypeMap.put(Command.CREATE_GROUP_RESP, CreateGroupRespPacket.class);
+        packetTypeMap.put(Command.JOIN_GROUP_REQ, JoinGroupReqPacket.class);
+        packetTypeMap.put(Command.JOIN_GROUP_RESP, JoinGroupRespPacket.class);
+        packetTypeMap.put(Command.QUIT_GROUP_REQ, QuitGroupReqPacket.class);
+        packetTypeMap.put(Command.QUIT_GROUP_RESP, QuitGroupRespPacket.class);
+        packetTypeMap.put(Command.LIST_GROUP_MEMBERS_REQ, ListGroupMembersReqPacket.class);
+        packetTypeMap.put(Command.LIST_GROUP_MEMBERS_RESP, ListGroupMembersRespPacket.class);
     }
 
     /**
@@ -104,6 +106,6 @@ public class PacketCodeC {
     }
 
     private static Class<? extends Packet> getRequestType(Byte command) {
-        return requestTypeMap.get(command);
+        return packetTypeMap.get(command);
     }
 }

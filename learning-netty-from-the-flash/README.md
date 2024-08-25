@@ -106,6 +106,10 @@
 * [chapter17](src/main/java/hochenchong/chapter/chapter17)
 * ChannelGroup：多个 Channel 操作聚合一起，批量读写操作。
 
+### 第 18 章　群聊的成员管理
+* [chapter18](src/main/java/hochenchong/chapter/chapter18)
+* 群成员的管理：加入，退出，获取成员列表
+
 ---
 
 ### 后记

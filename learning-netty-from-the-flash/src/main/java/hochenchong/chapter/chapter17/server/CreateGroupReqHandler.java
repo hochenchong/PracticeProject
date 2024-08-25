@@ -37,17 +37,21 @@ public class CreateGroupReqHandler extends SimpleChannelInboundHandler<CreateGro
             }
         }
 
+        String groupId = IdUtils.getGroupId();
+
         // 拉入的时候，加上自己的
         Session session = SessionUtils.getSession(ctx.channel());
         usernames.add(session.getUsername());
         channelGroup.add(ctx.channel());
         // 去重复
         usernames = usernames.stream().distinct().toList();
+        // 服务器端保存数据
+        SessionUtils.addChannelGroup(groupId, channelGroup);
 
         // 响应结果
         CreateGroupRespPacket createGroupRespPacket = new CreateGroupRespPacket();
         createGroupRespPacket.setSuccess(true);
-        createGroupRespPacket.setGroupId(IdUtils.getGroupId());
+        createGroupRespPacket.setGroupId(groupId);
         createGroupRespPacket.setUsernames(usernames);
 
         // 给每个客户端发送拉群通知

@@ -1,4 +1,4 @@
-package hochenchong.chapter.chapter17;
+package hochenchong.chapter.chapter18;
 
 import hochenchong.chapter.chapter12.PacketDecoder;
 import hochenchong.chapter.chapter12.PacketEncoder;
@@ -7,6 +7,9 @@ import hochenchong.chapter.chapter17.client.CreateGroupRespHandler;
 import hochenchong.chapter.chapter17.client.LoginRespHandler;
 import hochenchong.chapter.chapter17.client.MsgRespHandler;
 import hochenchong.chapter.chapter17.command.LoginConsoleCommand;
+import hochenchong.chapter.chapter18.client.JoinGroupRespHandler;
+import hochenchong.chapter.chapter18.client.QuitGroupRespHandler;
+import hochenchong.chapter.chapter18.server.ListGroupMembersRespHandler;
 import hochenchong.protocol.command.ConsoleCommandManager;
 import hochenchong.utils.SessionUtils;
 import io.netty.bootstrap.Bootstrap;
@@ -44,6 +47,9 @@ public class NettyClient {
                         ch.pipeline().addLast(new LoginRespHandler());
                         ch.pipeline().addLast(new MsgRespHandler());
                         ch.pipeline().addLast(new CreateGroupRespHandler());
+                        ch.pipeline().addLast(new JoinGroupRespHandler());
+                        ch.pipeline().addLast(new QuitGroupRespHandler());
+                        ch.pipeline().addLast(new ListGroupMembersRespHandler());
                         ch.pipeline().addLast(new PacketEncoder());
                     }
                 });
