@@ -10,17 +10,26 @@ public interface Command {
     /**
      * 登录请求
      */
-    byte LOGIN_REQ = 1;
+    Byte LOGIN_REQ = 1;
     /**
      * 登录响应
      */
-    byte LOGIN_RESP = 2;
+    Byte LOGIN_RESP = 2;
     /**
      * 消息请求
      */
-    byte MSG_REQ = 3;
+    Byte MSG_REQ = 3;
     /**
      * 消息响应
      */
-    byte MSG_RESP = 4;
+    Byte MSG_RESP = 4;
+
+    /**
+     * 创建群聊
+     */
+    Byte CREATE_GROUP_REQ = 5;
+    /**
+     * 创建群聊响应
+     */
+    Byte CREATE_GROUP_RESP = 6;
 }

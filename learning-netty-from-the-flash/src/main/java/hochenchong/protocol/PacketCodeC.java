@@ -1,15 +1,20 @@
 package hochenchong.protocol;
 
 import hochenchong.protocol.command.Command;
+import hochenchong.protocol.req.CreateGroupReqPacket;
 import hochenchong.protocol.req.LoginReqPacket;
 import hochenchong.protocol.req.MsgReqPacket;
+import hochenchong.protocol.resp.CreateGroupRespPacket;
+import hochenchong.protocol.resp.LoginRespPacket;
 import hochenchong.protocol.resp.MsgRespPacket;
 import hochenchong.serialize.JSONSerializer;
 import hochenchong.serialize.Serializer;
 import hochenchong.serialize.SerializerAlgorithm;
-import hochenchong.protocol.resp.LoginRespPacket;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufAllocator;
+
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * 编解码
@@ -28,7 +33,16 @@ public class PacketCodeC {
     public static final int MAGIC_NUMBER = 0x12345678;
     public static final PacketCodeC INSTANCE = new PacketCodeC();
 
+    private static final Map<Byte, Class<? extends Packet>> requestTypeMap = new ConcurrentHashMap<>();
 
+    static {
+        requestTypeMap.put(Command.LOGIN_REQ, LoginReqPacket.class);
+        requestTypeMap.put(Command.LOGIN_RESP, LoginRespPacket.class);
+        requestTypeMap.put(Command.MSG_REQ, MsgReqPacket.class);
+        requestTypeMap.put(Command.MSG_RESP, MsgRespPacket.class);
+        requestTypeMap.put(Command.CREATE_GROUP_REQ, CreateGroupReqPacket.class);
+        requestTypeMap.put(Command.CREATE_GROUP_RESP, CreateGroupRespPacket.class);
+    }
 
     /**
      * 编码
@@ -89,18 +103,7 @@ public class PacketCodeC {
         return null;
     }
 
-    private Class<? extends Packet> getRequestType(byte command) {
-        switch (command) {
-            case Command.LOGIN_REQ :
-                return LoginReqPacket.class;
-            case Command.LOGIN_RESP :
-                return LoginRespPacket.class;
-            case Command.MSG_REQ :
-                return MsgReqPacket.class;
-            case Command.MSG_RESP :
-                return MsgRespPacket.class;
-            default:
-                return null;
-        }
+    private static Class<? extends Packet> getRequestType(Byte command) {
+        return requestTypeMap.get(command);
     }
 }

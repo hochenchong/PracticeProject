@@ -100,6 +100,11 @@
 ### 第 16 章　客户端互聊的原理与实现
 * [chapter16](src/main/java/hochenchong/chapter/chapter16)
 * 绑定信息，以此实现两个客户端通过对方的 id 进行互聊
+* 客户端和服务器建立联系，但 Channel 不是同一个，是对应的关系。即服务器的 channel 与客户端的 channel 不是同一个对象，但彼此映射
+
+### 第 17 章　群聊的发起与通知
+* [chapter17](src/main/java/hochenchong/chapter/chapter17)
+* ChannelGroup：多个 Channel 操作聚合一起，批量读写操作。
 
 ---
 

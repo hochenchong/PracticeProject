@@ -1,30 +1,26 @@
 package hochenchong.protocol.req;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import hochenchong.protocol.command.Command;
 import hochenchong.protocol.Packet;
+import hochenchong.protocol.command.Command;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.util.List;
+
 /**
- * 登录请求
- *
  * @author hochenchong
- * @date 2024/08/22
+ * @date 2024/08/25
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class LoginReqPacket extends Packet {
+public class CreateGroupReqPacket extends Packet {
 
-    private Integer userId;
-
-    private String username;
-
-    private String password;
+    private List<String> userIds;
 
     @JsonIgnore
     @Override
     public Byte getCommand() {
-        return Command.LOGIN_REQ;
+        return Command.CREATE_GROUP_REQ;
     }
 }

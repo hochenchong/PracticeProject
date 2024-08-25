@@ -34,7 +34,7 @@ public class LoginRespPacket extends Packet {
 
     @JsonIgnore
     @Override
-    public byte getCommand() {
+    public Byte getCommand() {
         return Command.LOGIN_RESP;
     }
 }

@@ -23,7 +23,7 @@ public class MsgReqPacket extends Packet {
 
     @JsonIgnore
     @Override
-    public byte getCommand() {
+    public Byte getCommand() {
         return Command.MSG_REQ;
     }
 }

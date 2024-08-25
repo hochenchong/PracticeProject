@@ -6,24 +6,24 @@ import hochenchong.protocol.command.Command;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.util.List;
+
 /**
- * 消息响应
- *
  * @author hochenchong
- * @date 2024/08/22
+ * @date 2024/08/25
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class MsgRespPacket extends Packet {
-    private String fromUserId;
+public class CreateGroupRespPacket extends Packet {
+    private boolean success;
 
-    private String fromUsername;
+    private String groupId;
 
-    private String message;
+    private List<String> usernames;
 
     @JsonIgnore
     @Override
     public Byte getCommand() {
-        return Command.MSG_RESP;
+        return Command.CREATE_GROUP_RESP;
     }
 }
