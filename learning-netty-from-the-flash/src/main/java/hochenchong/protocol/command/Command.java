@@ -64,7 +64,13 @@ public interface Command {
      * 发送群消息响应
      */
     Byte GROUP_MSG_RESP = 14;
-
-
+    /**
+     * 心跳请求
+     */
+    Byte HEARTBEAT_REQ = 99;
+    /**
+     * 心跳响应
+     */
+    Byte HEARTBEAT_RESP = 100;
 
 }

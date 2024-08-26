@@ -119,6 +119,10 @@
 * 合并平行 Handler，[IMReqHandler](src/main/java/hochenchong/chapter/chapter19/server/IMReqHandler.java)
 * 耗时长的操作，丢到线程池去处理
 
+### 第 20 章 心跳与空闲检测
+* [chapter20](src/main/java/hochenchong/chapter/chapter20)
+* 服务器与客户端，使用 IdleStateHandler 进行空闲检测，发送心跳维持连接
+
 ---
 
 ### 后记
