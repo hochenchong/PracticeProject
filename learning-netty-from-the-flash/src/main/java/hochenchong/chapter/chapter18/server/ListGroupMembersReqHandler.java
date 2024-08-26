@@ -1,4 +1,4 @@
-package hochenchong.chapter.chapter18.client;
+package hochenchong.chapter.chapter18.server;
 
 import hochenchong.chapter.chapter16.Session;
 import hochenchong.protocol.req.ListGroupMembersReqPacket;

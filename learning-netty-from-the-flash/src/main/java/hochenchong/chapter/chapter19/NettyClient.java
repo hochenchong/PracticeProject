@@ -1,7 +1,5 @@
-package hochenchong.chapter.chapter18;
+package hochenchong.chapter.chapter19;
 
-import hochenchong.chapter.chapter12.PacketDecoder;
-import hochenchong.chapter.chapter12.PacketEncoder;
 import hochenchong.chapter.chapter13.CustomLengthFieldBasedFrameDecoder;
 import hochenchong.chapter.chapter17.client.CreateGroupRespHandler;
 import hochenchong.chapter.chapter17.client.LoginRespHandler;
@@ -10,7 +8,9 @@ import hochenchong.chapter.chapter17.command.LoginConsoleCommand;
 import hochenchong.chapter.chapter18.client.JoinGroupRespHandler;
 import hochenchong.chapter.chapter18.client.QuitGroupRespHandler;
 import hochenchong.chapter.chapter18.client.ListGroupMembersRespHandler;
+import hochenchong.chapter.chapter19.client.IMRespHandler;
 import hochenchong.protocol.command.ConsoleCommandManager;
+import hochenchong.protocol.handler.PacketCodecHandler;
 import hochenchong.utils.SessionUtils;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
@@ -43,14 +43,9 @@ public class NettyClient {
                     @Override
                     protected void initChannel(Channel ch) throws Exception {
                         ch.pipeline().addLast(new CustomLengthFieldBasedFrameDecoder());
-                        ch.pipeline().addLast(new PacketDecoder());
+                        ch.pipeline().addLast(PacketCodecHandler.INSTANCE);
                         ch.pipeline().addLast(new LoginRespHandler());
-                        ch.pipeline().addLast(new MsgRespHandler());
-                        ch.pipeline().addLast(new CreateGroupRespHandler());
-                        ch.pipeline().addLast(new JoinGroupRespHandler());
-                        ch.pipeline().addLast(new QuitGroupRespHandler());
-                        ch.pipeline().addLast(new ListGroupMembersRespHandler());
-                        ch.pipeline().addLast(new PacketEncoder());
+                        ch.pipeline().addLast(IMRespHandler.INSTANCE);
                     }
                 });
         // 建立连接

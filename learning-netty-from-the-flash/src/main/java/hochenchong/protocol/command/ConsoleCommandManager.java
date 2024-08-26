@@ -7,6 +7,7 @@ import hochenchong.chapter.chapter17.command.SendToUserConsoleCommand;
 import hochenchong.chapter.chapter18.command.JoinGroupConsoleCommand;
 import hochenchong.chapter.chapter18.command.ListGroupMembersConsoleCommand;
 import hochenchong.chapter.chapter18.command.QuitGroupConsoleCommand;
+import hochenchong.chapter.chapter19.command.GroupMsgConsoleCommand;
 import io.netty.channel.Channel;
 
 import java.util.HashMap;
@@ -28,6 +29,7 @@ public class ConsoleCommandManager implements ConsoleCommand {
         consoleCommandMap.put("joinGroup", new JoinGroupConsoleCommand());
         consoleCommandMap.put("quitGroup", new QuitGroupConsoleCommand());
         consoleCommandMap.put("listGroupMembers", new ListGroupMembersConsoleCommand());
+        consoleCommandMap.put("sendToGroup", new GroupMsgConsoleCommand());
     }
 
     @Override

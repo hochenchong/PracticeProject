@@ -1,11 +1,8 @@
-package hochenchong.chapter.chapter18.server;
+package hochenchong.chapter.chapter18.client;
 
 import hochenchong.protocol.resp.ListGroupMembersRespPacket;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author hochenchong

@@ -1,9 +1,12 @@
 package hochenchong.chapter.chapter16;
 
+import lombok.Data;
+
 /**
  * @author hochenchong
  * @date 2024/08/24
  */
+@Data
 public class Session {
     private String userId;
 
@@ -14,22 +17,6 @@ public class Session {
 
     public Session(String userId, String username) {
         this.userId = userId;
-        this.username = username;
-    }
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
         this.username = username;
     }
 

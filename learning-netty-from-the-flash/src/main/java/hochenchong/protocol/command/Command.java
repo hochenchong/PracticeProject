@@ -56,5 +56,15 @@ public interface Command {
      * 查看群成员响应
      */
     Byte LIST_GROUP_MEMBERS_RESP = 12;
+    /**
+     * 发送群消息
+     */
+    Byte GROUP_MSG_REQ = 13;
+    /**
+     * 发送群消息响应
+     */
+    Byte GROUP_MSG_RESP = 14;
+
+
 
 }

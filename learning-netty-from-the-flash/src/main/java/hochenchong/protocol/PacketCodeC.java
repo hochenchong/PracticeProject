@@ -44,6 +44,8 @@ public class PacketCodeC {
         packetTypeMap.put(Command.QUIT_GROUP_RESP, QuitGroupRespPacket.class);
         packetTypeMap.put(Command.LIST_GROUP_MEMBERS_REQ, ListGroupMembersReqPacket.class);
         packetTypeMap.put(Command.LIST_GROUP_MEMBERS_RESP, ListGroupMembersRespPacket.class);
+        packetTypeMap.put(Command.GROUP_MSG_REQ, GroupMsgReqPacket.class);
+        packetTypeMap.put(Command.GROUP_MSG_RESP, GroupMsgRespPacket.class);
     }
 
     /**

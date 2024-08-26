@@ -110,6 +110,15 @@
 * [chapter18](src/main/java/hochenchong/chapter/chapter18)
 * 群成员的管理：加入，退出，获取成员列表
 
+### 第 19 章　群聊消息的收发及 Netty 性能优化
+* [chapter19](src/main/java/hochenchong/chapter/chapter19)
+* 对于服务器，每次有新的客户端连接，都会调用 ChannelInitializer 的 initChannel() 方法，里面的 Handler 都会被创建一遍 
+* 优化：
+* 对于无状态的 Handler，使用单例模式，减少大量 Handler 对象创建
+  * Handler 被共享，必须加上 @ChannelHandler.Sharable 注解，不然会报错
+* 合并平行 Handler，[IMReqHandler](src/main/java/hochenchong/chapter/chapter19/server/IMReqHandler.java)
+* 耗时长的操作，丢到线程池去处理
+
 ---
 
 ### 后记

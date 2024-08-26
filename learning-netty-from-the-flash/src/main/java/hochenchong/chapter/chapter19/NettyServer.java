@@ -1,14 +1,9 @@
-package hochenchong.chapter.chapter18;
+package hochenchong.chapter.chapter19;
 
-import hochenchong.chapter.chapter12.PacketDecoder;
-import hochenchong.chapter.chapter12.PacketEncoder;
 import hochenchong.chapter.chapter13.CustomLengthFieldBasedFrameDecoder;
-import hochenchong.chapter.chapter17.server.CreateGroupReqHandler;
 import hochenchong.chapter.chapter17.server.LoginReqHandler;
-import hochenchong.chapter.chapter17.server.MsgReqHandler;
-import hochenchong.chapter.chapter18.server.ListGroupMembersReqHandler;
-import hochenchong.chapter.chapter18.server.JoinGroupReqHandler;
-import hochenchong.chapter.chapter18.server.QuitGroupReqHandler;
+import hochenchong.chapter.chapter19.server.IMReqHandler;
+import hochenchong.protocol.handler.PacketCodecHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelOption;
@@ -49,14 +44,9 @@ public class NettyServer {
                         // ch.pipeline().addLast(new LengthFieldBasedFrameDecoder(Integer.MAX_VALUE, 7, 4));
                         // 自定义 LengthFieldBasedFrameDecoder，拒接非本协议链接
                         ch.pipeline().addLast(new CustomLengthFieldBasedFrameDecoder());
-                        ch.pipeline().addLast(new PacketDecoder());
+                        ch.pipeline().addLast(PacketCodecHandler.INSTANCE);
                         ch.pipeline().addLast(new LoginReqHandler());
-                        ch.pipeline().addLast(new MsgReqHandler());
-                        ch.pipeline().addLast(new CreateGroupReqHandler());
-                        ch.pipeline().addLast(new JoinGroupReqHandler());
-                        ch.pipeline().addLast(new QuitGroupReqHandler());
-                        ch.pipeline().addLast(new ListGroupMembersReqHandler());
-                        ch.pipeline().addLast(new PacketEncoder());
+                        ch.pipeline().addLast(IMReqHandler.INSTANCE);
                     }
                 });
         bind(bootstrap,8000);
