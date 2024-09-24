@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1,
+    "question": "你更喜欢独处还是与人交往？",
+    "options": [
+      { "text": "我更喜欢独处", "value": "I" },
+      { "text": "我更喜欢与人交往", "value": "E" }
+    ]
+  },
+  {
+    "id": 2,
+    "question": "当做决定时，你更依赖情感还是逻辑？",
+    "options": [
+      { "text": "我依赖情感", "value": "F" },
+      { "text": "我依赖逻辑", "value": "T" }
+    ]
+  },
+  {
+    "id": 3,
+    "question": "你更倾向于计划一切，还是顺其自然？",
+    "options": [
+      { "text": "我喜欢计划一切", "value": "J" },
+      { "text": "我顺其自然", "value": "P" }
+    ]
+  },
+  {
+    "id": 4,
+    "question": "在处理问题时，你依赖直觉还是观察细节？",
+    "options": [
+      { "text": "我依赖直觉", "value": "N" },
+      { "text": "我观察细节", "value": "S" }
+    ]
+  },
+  {
+    "id": 5,
+    "question": "你在社交场合中如何充电？",
+    "options": [
+      { "text": "我通过独处充电", "value": "I" },
+      { "text": "我通过与他人互动充电", "value": "E" }
+    ]
+  },
+  {
+    "id": 6,
+    "question": "你更倾向于在日常生活中依赖什么来解决问题？",
+    "options": [
+      { "text": "我依赖感觉和情感", "value": "F" },
+      { "text": "我依赖事实和逻辑", "value": "T" }
+    ]
+  },
+  {
+    "id": 7,
+    "question": "你如何应对突发情况？",
+    "options": [
+      { "text": "我提前规划以应对变化", "value": "J" },
+      { "text": "我随时适应变化", "value": "P" }
+    ]
+  },
+  {
+    "id": 8,
+    "question": "你如何看待新信息？",
+    "options": [
+      { "text": "我更关注全局和未来可能性", "value": "N" },
+      { "text": "我更关注具体事实和细节", "value": "S" }
+    ]
+  }
+]

@@ -1,4 +1,4 @@
-.indexPage {
+.resultPage {
   background: #80A8C2;
   height: 100vh;
 
@@ -13,8 +13,10 @@
     margin-bottom: 48px;
   }
 
-  .progress {
+  .enterBtn {
     // 占 60%
     width: 60vw;
+    background: #806497;
+    border-color: #806497;
   }
 }
